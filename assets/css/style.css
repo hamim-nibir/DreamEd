@@ -1,0 +1,34 @@
+body{
+    background-color: #cef2e7;
+}
+.navbar {
+    margin-top: 5px;
+}
+.navbar-nav {
+    background-color: transparent;
+    margin-left: 350px;
+}
+.nav-item{
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 20px;
+}
+.nav-right-items {
+    list-style: none;
+    padding-left: 15px;
+}
+.hero-section{
+    display: inline-block;
+    background-color: transparent;
+}
+.hero-image{
+    display: flex;
+    margin-left: 750px;
+    max-width: 800px;
+    height: 500px;
+    background: transparent;
+}
+.enter-btn{
+    display: inline-block;
+    background: transparent;
+}
