@@ -16,19 +16,69 @@ body{
 .nav-right-items {
     list-style: none;
     padding-left: 15px;
+    margin-right: 10px;
+}
+.brandlogo{
+    max-height: fit-content;
+    max-width: 50px;
+    margin-right: 10px;
 }
 .hero-section{
-    display: inline-block;
+    display: flex;
     background-color: transparent;
+    justify-content: space-around;
 }
 .hero-image{
-    display: flex;
-    margin-left: 750px;
+    flex: 1 1 60%;
+    margin-left: 300px;
+    margin-top: 75px;
     max-width: 800px;
     height: 500px;
     background: transparent;
 }
-.enter-btn{
-    display: inline-block;
-    background: transparent;
+.leftcol{
+    flex: 1 1 40%;
+    margin-left: 50px;
+    margin-top: 50px;
 }
+.enter-btn{
+    background-color:transparent;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 20px;
+    padding: 14px 80px;
+    margin-top: 350px;
+    margin-left: 300px;
+    margin-bottom: 300px;
+}
+
+
+.nav-right {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.nav-right-icons .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 125%; /* Position above the element */
+    right: 0%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.nav-right-icons:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
