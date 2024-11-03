@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg bg-body-transparent">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img class="brandlogo" src="/assets//images/placeholderlogo.png" alt="LOGO">DBMS
+            <img class="brandlogo" src="/assets//images/placeholderlogo.png" alt="LOGO">
           </a>  <!--Added an reference placeholder logo image-->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,18 +56,19 @@
           </div>
         </div>
       </nav>
-      
-      <div class="hero-section">
-        <div class="leftcol"> <!--Divison for both the button and the text-->
-          <h3>Here is some text for reference</h3>
-          <button class="enter-btn">Enter</button> <!---Place Holder Button--->
+      <div class="hero-section" id="hero-section">
+        <div class="leftcol">
+            <h5>Welcome to</h5>
+            <h3>Scholarship Opportunities</h3>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+            <a href="/login.php" class="login"><button>Enter</button></a>
         </div>
-        <img src="assets/images/hero-img.png" alt="" class="hero-image"> <!--Fixed Location issues--->
-      </div>    
-      
-
-
+        <div class="rightcol">
+            <img src="/assets/images/hero-img.png">
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
 </html>
