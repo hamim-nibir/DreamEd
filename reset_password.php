@@ -9,7 +9,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/loginpage.css">
-    <title>Login/Register | DBMS</title>
+    <link rel="stylesheet" href="/assets/css/reset_password.css">
+    <title>Reset Password | DBMS</title>
     <!--Tab Icon-->
     <link rel="shortcut icon" href="" type="image/svg+xml">
 </head>
@@ -69,34 +70,31 @@
         <div class="form-container sign-up">
         <?php require 'partials/registration.php' ?>
             <form action="login_page.php" method="post">
-                <h1>Create Account</h1>
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
-                <input type="password" class="form-control" name="retype_password" placeholder="Retype Password" required>
-                <button type="submit" name="submit">Register</button>
+                <h1>Password Recovery</h1>
+                <input type="text" class="form-control" name="otp" placeholder="OTP" required>
+                <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
+                <input type="password" class="form-control" name="retype_new_password" placeholder="Retype new password" required>
+                <button type="submit" name="submit">Change Password</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form action="login_page.php" method="post">
-                <h1>Login</h1>
+                <h1>Password Recovery</h1>
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password"  class="form-control" name="password" placeholder="Password" required>
-                <a href="/reset_password.php">Forgot Password?</a>
-                <button>Login</button>
+                <button>Send OTP</button>
             </form>
         </div>
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
-                    <h1>Welcome!</h1>
-                    <p>Already have an account? Sign in.</p>
-                    <button class="hidden" id="login">Sign In</button>
+                    <h1>Whoaaa!</h1>
+                    <p>Check your mail for the OTP & create new password.</p>
+                    <button class="hidden" id="login">Didn't Get It</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome!</h1>
-                    <p>Don't have an account? Sign up with your personal details to get all the services.</p>
-                    <button class="hidden" id="register">Sign Up</button>
+                    <h1>Oops!</h1>
+                    <p>Forgot your password? Don't worry, provide your email address and get OTP to recover your password.</p>
+                    <button class="hidden" id="register">Got It!</button>
                 </div>
             </div>
         </div>
