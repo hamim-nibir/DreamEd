@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/loginpage.css">
-    <title>Login/Register | DBMS</title>
+    <title>Reset Password | DBMS</title>
     <!--Tab Icon-->
     <link rel="shortcut icon" href="" type="image/svg+xml">
 </head>
@@ -82,7 +82,7 @@
                 <h1>Login</h1>
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
                 <input type="password"  class="form-control" name="password" placeholder="Password" required>
-                <a href="/reset_password.php">Forgot Password?</a>
+                <a href="#">Forgot Password?</a>
                 <button>Login</button>
             </form>
         </div>
