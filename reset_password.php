@@ -9,6 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/loginpage.css">
+    <link rel="stylesheet" href="/assets/css/reset_password.css">
     <title>Reset Password | DBMS</title>
     <!--Tab Icon-->
     <link rel="shortcut icon" href="" type="image/svg+xml">
@@ -79,11 +80,9 @@
         </div>
         <div class="form-container sign-in">
             <form action="login_page.php" method="post">
-                <h1>Login</h1>
+                <h1>Password Recovery</h1>
                 <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password"  class="form-control" name="password" placeholder="Password" required>
-                <a href="#">Forgot Password?</a>
-                <button>Login</button>
+                <button>Send OTP</button>
             </form>
         </div>
         <div class="toggle-container">
@@ -94,9 +93,9 @@
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome!</h1>
-                    <p>Don't have an account? Sign up with your personal details to get all the services.</p>
-                    <button class="hidden" id="register">Sign Up</button>
+                    <h1>Oops!</h1>
+                    <p>Forgot your password? Don't worry, provide your email address and get OTP to recover your password.</p>
+                    <button class="hidden" id="register">Got It!</button>
                 </div>
             </div>
         </div>
