@@ -70,12 +70,11 @@
         <div class="form-container sign-up">
         <?php require 'partials/registration.php' ?>
             <form action="login_page.php" method="post">
-                <h1>Create Account</h1>
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
-                <input type="email" class="form-control" name="email" placeholder="Email" required>
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
-                <input type="password" class="form-control" name="retype_password" placeholder="Retype Password" required>
-                <button type="submit" name="submit">Register</button>
+                <h1>Password Recovery</h1>
+                <input type="text" class="form-control" name="otp" placeholder="OTP" required>
+                <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
+                <input type="password" class="form-control" name="retype_new_password" placeholder="Retype new password" required>
+                <button type="submit" name="submit">Change Password</button>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -88,9 +87,9 @@
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
-                    <h1>Welcome!</h1>
-                    <p>Already have an account? Sign in.</p>
-                    <button class="hidden" id="login">Sign In</button>
+                    <h1>Whoaaa!</h1>
+                    <p>Check your mail for the OTP & create new password.</p>
+                    <button class="hidden" id="login">Didn't Get It</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Oops!</h1>
