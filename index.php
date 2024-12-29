@@ -1,27 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don't Know yet | Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">   <!--Fixed Location issues--->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | DreamEd</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/index_style.css">
 </head>
+
 <body>
-    <?php require 'partials/navs/full_nav.php' ?> 
-    <!-- navbar er code hijibiji lagtesilo dheke partials/nav folder e pathay disi -->
-    <div class="hero-section" id="hero-section">
-      <div class="leftcol">
-        <h5>Welcome to</h5>
-        <h3>Scholarship Opportunities</h3>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <a href="/login.php" class="login"><button>Enter</button></a>
+<!-- navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">DreamEd</a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Universities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Scholarships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Preparations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blogs</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="rightcol">
-        <img src="/assets/images/hero-img.png">
-      </div>
+      <!-- Right-side icons -->
+      <ul class="nav-right">
+        <li><a href="#"><i class="fas fa-search fa-lg"></i></a></li>
+        <li><a href="#"><i class="far fa-comment fa-lg"></i></a></li>
+        <li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </nav>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
