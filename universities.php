@@ -10,14 +10,14 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/index_style.css">
+  <link rel="stylesheet" href="assets/css/universities.css">
 </head>
 
 <body>
 <!-- navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">DreamEd</a>
+      <a class="navbar-brand" href="index.php">DreamEd</a>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
@@ -26,10 +26,10 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">Universities</a>
+              <a class="nav-link active" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Scholarships</a>

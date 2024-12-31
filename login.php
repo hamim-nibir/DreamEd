@@ -7,63 +7,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/loginpage.css">
-    <title>Login/Register | DBMS</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <title>Login/Register | DreamEd</title>
     <!--Tab Icon-->
     <link rel="shortcut icon" href="" type="image/svg+xml">
 </head>
 
 <body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/index.php">
-            <img class="brandlogo" src="/assets//images/placeholderlogo.png" alt="LOGO">
-          </a>  <!--Added an reference placeholder logo image-->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/index.php">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/feed.php">Feed</a>
-              </li>
-            </ul>
-            <div class="nav-right">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">  <!--Added tooltip for icons without text-->
-                  <div class="nav-right-icons">
-                    <li class="nav-right-items"><i class="fa-solid fa-magnifying-glass fa-lg"></i> <span class = "tooltiptext">Search</span></li>
-                  </div>
-                  <div class="nav-right-icons">
-                    <li class="nav-right-items"><i class="fa-regular fa-message fa-lg"></i><span class = "tooltiptext">Messages</span></li>
-                  </div>
-                  <div class="nav-right-icons">  
-                    <li class="nav-right-items"><i class="fa-regular fa-user fa-lg"></i><span class = "tooltiptext">Profile</span></li>
-                  </div>
-                </ul>
-            </div>
-          </div>
+    <!-- navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">DreamEd</a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
-    <!-- Navbar -->
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="universities.php">Universities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Scholarships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Preparations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Right-side icons -->
+      <ul class="nav-right">
+        <li><a href="#"><i class="fas fa-search fa-lg"></i></a></li>
+        <li><a href="#"><i class="far fa-comment fa-lg"></i></a></li>
+        <li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Login Page -->
 
     <div class="container" id="container">
         <div class="form-container sign-up">
