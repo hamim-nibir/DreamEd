@@ -1,0 +1,107 @@
+body{
+    background-color: #cef2e7;
+}
+.nav-right {
+    display: flex;
+    position: absolute;
+    top: 10px; /* Adjust for vertical alignment */
+    right: 15px; /* Adjust for horizontal alignment */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-right-items {
+    margin-left: 15px; /* Space between icons */
+  }
+  
+  .navbar-brand {
+    margin-right: auto; /* Pushes brand to the left */
+  }
+  
+  .navbar {
+    position: relative;
+  }
+  
+  .nav-right a {
+    text-decoration: none;
+    color: #000; /* Adjust color to match design */
+  }
+  
+/* .nav-right .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 125%; /* Position above the element */
+    /* right: 0%;
+    margin-left: -60px; /* Center the tooltip */
+    /* opacity: 0;
+    transition: opacity 0.3s;
+} */
+
+/* .nav-right:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+} */ 
+
+.hero-section{
+    background-color: transparent;
+    /* padding: 10px 10px; */
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+.hero-section .leftcol{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background: transparent;
+}
+.hero-section .leftcol h3{
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 46px;
+}
+
+.hero-section .leftcol h3 span{
+    color: #5e3bee;
+}
+
+.hero-section .leftcol p{
+    color: #1c1e53;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.hero-section .leftcol button{
+    margin-top: 40px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #5e3bee;
+    padding: 14px 24px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.hero-section .rightcol img{
+    background: tra;
+    width: 500px;
+}
+
+
+
+@media screen {
+
+    
+}
+
+

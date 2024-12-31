@@ -29,7 +29,7 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="universities.php">Universities</a>
+              <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Scholarships</a>
