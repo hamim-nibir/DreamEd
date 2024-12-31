@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<!-- navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">DreamEd</a>
@@ -43,22 +43,44 @@
           </ul>
         </div>
       </div>
+
       <!-- Right-side icons -->
       <ul class="nav-right">
-        <li><a href="#"><i class="fas fa-search fa-lg"></i></a></li>
-        <li><a href="#"><i class="far fa-comment fa-lg"></i></a></li>
-        <li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+        <!-- Search Icon -->
+        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <!-- message Icon -->
+        <li><a href="#"><i class="far fa-comment"></i></a></li>
+        <!-- User Icon with Dropdown -->
+        <li class="dropdown">
+          <a href="#" id="userIcon" class="d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
+            <!-- Logged-out menu -->
+            <div id="loggedOutMenu" class="d-none">
+              <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
+            </div>
+            <!-- Logged-in menu -->
+            <div id="loggedInMenu" class="d-none">
+              <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+            </div>
+          </ul>
+        </li>
       </ul>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
   </nav>
 
-
-
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/universities.js"></script>
 </body>
 
 </html>
