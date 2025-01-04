@@ -35,7 +35,7 @@
               <a class="nav-link" href="#">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Preparations</a>
+              <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Blogs</a>

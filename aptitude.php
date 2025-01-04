@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universities | DreamEd</title>
+  <title>Preparations | DreamEd</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/universities.css">
+  <link rel="stylesheet" href="assets/css/preparations.css">
 </head>
-
 <body>
-  <!-- Navbar -->
+    <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">DreamEd</a>
@@ -29,13 +28,13 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="universities.php">Universities</a>
+              <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="preparations.php">Preparations</a>
+              <a class="nav-link active" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Blogs</a>
@@ -77,10 +76,42 @@
     </div>
   </nav>
 
-  <!-- Bootstrap JS -->
+  <!-- main content -->
+
+    <div class="content">
+        <!-- Title and Subtitle -->
+        <h1 class="section-heading">Aptitude Tests</h1>
+        <p class="section-subtitle">Sharpen your logical reasoning with our curated quizzes.</p>
+        
+        <!-- Quiz List -->
+        <div class="quiz-list">
+            <!-- Quiz Row -->
+            <div class="quiz-row">
+                <div class="quiz-item serial">1</div>
+                <div class="quiz-item test-name">Logical Reasoning Test</div>
+                <div class="quiz-item question-count">20 Questions</div>
+                <a href="quiz1.php" class="quiz-btn">Enter Quiz</a>
+            </div>
+            
+            <div class="quiz-row">
+                <div class="quiz-item serial">2</div>
+                <div class="quiz-item test-name">Numerical Ability Test</div>
+                <div class="quiz-item question-count">15 Questions</div>
+                <a href="quiz2.php" class="quiz-btn">Enter Quiz</a>
+            </div>
+            
+            <div class="quiz-row">
+                <div class="quiz-item serial">3</div>
+                <div class="quiz-item test-name">Data Interpretation Test</div>
+                <div class="quiz-item question-count">10 Questions</div>
+                <a href="quiz3.php" class="quiz-btn">Enter Quiz</a>
+            </div>
+        </div>
+    </div>
+
+     <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom JS -->
   <script src="assets/js/index.js"></script>
 </body>
-
 </html>

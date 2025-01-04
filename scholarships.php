@@ -30,6 +30,9 @@
                 <a class="nav-link active" href="#">Scholarships</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="preparations.php">Preparations</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">Blogs</a>
               </li>
             </ul>

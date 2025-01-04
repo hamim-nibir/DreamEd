@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universities | DreamEd</title>
+  <title>Preparations | DreamEd</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/universities.css">
+  <link rel="stylesheet" href="assets/css/preparations.css">
 </head>
 
 <body>
@@ -29,13 +29,13 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="universities.php">Universities</a>
+              <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="preparations.php">Preparations</a>
+              <a class="nav-link active" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Blogs</a>
@@ -76,6 +76,50 @@
       </button>
     </div>
   </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+        <h1 class="section-heading">Choose a Category</h1>
+        <div class="card-container">
+            <!-- Aptitude Test Card -->
+            <div class="card">
+                <img src="assets/images/a.jpg" alt="Aptitude Test" class="card-img">
+                <h3 class="card-title">Aptitude Test</h3>
+                <p class="card-subtitle">Sharpen your logical reasoning skills</p>
+                <a href="aptitude.php" class="card-btn">Let's Go</a>
+            </div>
+            <!-- General Knowledge Card -->
+            <div class="card">
+                <img src="images/general_knowledge.png" alt="General Knowledge" class="card-img">
+                <h3 class="card-title">General Knowledge</h3>
+                <p class="card-subtitle">Stay updated with the world</p>
+                <a href="general_knowledge.php" class="card-btn">Let's Go</a>
+            </div>
+            <!-- Vocabulary Card -->
+            <div class="card">
+                <img src="images/vocabulary.png" alt="Vocabulary" class="card-img">
+                <h3 class="card-title">Vocabulary</h3>
+                <p class="card-subtitle">Expand your word bank</p>
+                <a href="vocabulary.php" class="card-btn">Let's Go</a>
+            </div>
+            <!-- Grammar Card -->
+            <div class="card">
+                <img src="images/grammar.png" alt="Grammar" class="card-img">
+                <h3 class="card-title">Grammar</h3>
+                <p class="card-subtitle">Master the rules of language</p>
+                <a href="grammar.php" class="card-btn">Let's Go</a>
+            </div>
+            <!-- Math Card -->
+            <div class="card">
+                <img src="images/math.png" alt="Math" class="card-img">
+                <h3 class="card-title">Math</h3>
+                <p class="card-subtitle">Improve your problem-solving skills</p>
+                <a href="math.php" class="card-btn">Let's Go</a>
+            </div>
+        </div>
+    </div>
+
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
