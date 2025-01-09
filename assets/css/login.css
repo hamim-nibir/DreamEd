@@ -264,3 +264,27 @@ body {
 .container.active .toggle-right {
     transform: translateX(200%);
 }
+
+/* for radio buttons */
+.user-type {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.user-type label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-type input[type="radio"] {
+    accent-color: #512da8; /* Matches the theme color */
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}

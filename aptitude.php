@@ -81,7 +81,7 @@
     <div class="content">
         <!-- Title and Subtitle -->
         <h1 class="section-heading">Aptitude Tests</h1>
-        <p class="section-subtitle">Sharpen your logical reasoning with our curated quizzes.</p>
+        <p class="section-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         
         <!-- Quiz List -->
         <div class="quiz-list">
