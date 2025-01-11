@@ -23,6 +23,7 @@
         $Password = $_POST["password"];
         $Retype_password = $_POST["retype_password"];
         $passwordHash = password_hash($Password, PASSWORD_DEFAULT);
+        $user_type = $_POST["user_type"];
 
         require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
         $sql = "SELECT * FROM student WHERE email = '$Email'";
@@ -38,7 +39,15 @@
             echo "<script>alert('Password and Retype password must be the same')</script>";
         }
         else{
-            $sql = "INSERT INTO student(username, email, password) VALUES (?, ?, ?)";
+            if($user_type == "student"){
+              $sql = "INSERT INTO student(username, email, password) VALUES (?, ?, ?)";
+            } 
+            else if($user_type == "faculty"){
+              $sql = "INSERT INTO faculty(username, email, password) VALUES (?, ?, ?)";
+            }
+            else if($user_type == "alumni"){
+              $sql = "INSERT INTO alumni(username, email, password) VALUES (?, ?, ?)";
+            }
             $stmt = mysqli_stmt_init($conn);
             $prepareStmt= mysqli_stmt_prepare($stmt, $sql);
             if($prepareStmt){
@@ -51,7 +60,7 @@
             }
         }
     }
-
+  // login
     if(isset($_POST["btn_login"])){
         $Email = $_POST["email"];
         $Password = $_POST["password"];
@@ -147,7 +156,7 @@
         <input type="email" class="form-control" name="email" placeholder="Email" required>
         <input type="password" class="form-control" name="password" placeholder="Password" required>
         <a href="/reset_password.php">Forgot Password?</a>
-        <button>Login</button>
+        <button type="btn_login" name="btn_login">Login</button>
       </form>
     </div>
     <div class="toggle-container">
