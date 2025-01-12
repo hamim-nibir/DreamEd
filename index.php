@@ -70,7 +70,6 @@ session_start();
               <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
               <?php endif; ?>
-            <!-- </div> -->
           </ul>
         </li>
       </ul>

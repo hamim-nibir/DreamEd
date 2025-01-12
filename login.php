@@ -66,10 +66,12 @@
     session_start();
     $Email = $_POST['email'];
     $Password = $_POST['password'];
+    $UserType = $_POST["user_type"];
     require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+    $tableName = $UserType;
 
     // Check student table
-    $sql = "SELECT * FROM student WHERE email = ?";
+    $sql = "SELECT * FROM $tableName WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $Email);
     mysqli_stmt_execute($stmt);
@@ -78,7 +80,7 @@
 
     if ($user && password_verify($Password, $user['password'])) {
         $_SESSION['user_logged_in'] = true;
-        $_SESSION['user_type'] = 'student'; // or 'faculty', 'alumni' based on the table
+        $_SESSION["user_type"] = $UserType;
         $_SESSION['username'] = $user['username'];
         header("Location: index.php");
         exit();
@@ -122,10 +124,29 @@
       </div>
       <!-- Right-side icons -->
       <ul class="nav-right">
-        <li><a href="#"><i class="fas fa-search fa-lg"></i></a></li>
-        <li><a href="#"><i class="far fa-comment fa-lg"></i></a></li>
-        <li><a href="#"><i class="far fa-user fa-lg"></i></a></li>
+        <!-- Search Icon -->
+        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <!-- message Icon -->
+        <li><a href="#"><i class="far fa-comment"></i></a></li>
+        <!-- User Icon with Dropdown -->
+        <li class="dropdown">
+          <a href="#" id="userIcon" class="d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
+          <?php if (!isset($_SESSION['user_logged_in'])): ?>
+              <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
+            <?php else: ?>
+            
+              <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+              <?php endif; ?>
+          </ul>
+        </li>
       </ul>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -163,6 +184,11 @@
         <h1>Login</h1>
         <input type="email" class="form-control" name="email" placeholder="Email" required>
         <input type="password" class="form-control" name="password" placeholder="Password" required>
+        <select name="user_type" class="form-select" required>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="alumni">Alumni</option>
+        </select>
         <a href="/reset_password.php">Forgot Password?</a>
         <button type="btn_login" name="btn_login">Login</button>
       </form>
