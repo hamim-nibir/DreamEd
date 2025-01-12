@@ -1,3 +1,8 @@
+<?php
+// index.php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,17 +61,16 @@
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-            <!-- Logged-out menu -->
-            <div id="loggedOutMenu" class="d-none">
+          <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
-            </div>
-            <!-- Logged-in menu -->
-            <div id="loggedInMenu" class="d-none">
+            <?php else: ?>
+            
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
               <li><a class="dropdown-item" href="profile.php">Profile</a></li>
               <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-            </div>
+              <?php endif; ?>
+            <!-- </div> -->
           </ul>
         </li>
       </ul>

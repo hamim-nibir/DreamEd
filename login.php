@@ -18,6 +18,7 @@
  <!-- registration  -->
  <?php 
     if(isset($_POST["submit"])){
+      session_start();
         $userName = $_POST["username"];
         $Email = $_POST["email"];
         $Password = $_POST["password"];
@@ -61,23 +62,30 @@
         }
     }
   // login
-    if(isset($_POST["btn_login"])){
-        $Email = $_POST["email"];
-        $Password = $_POST["password"];
-        require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
-        $sql = "SELECT * FROM student WHERE email = '$Email'";
-        $result = mysqli_query($conn, $sql);
-        $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        if($user){
-            if(password_verify($Password, $user["password"])){
-                echo "<script>alert('Success!')</script>";
-                header("Location:index.php");
-            }
+  if (isset($_POST['btn_login'])) {
+    session_start();
+    $Email = $_POST['email'];
+    $Password = $_POST['password'];
+    require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
 
-        } else {
-            echo "<script>alert('Login Failed')</script>";
-        }
+    // Check student table
+    $sql = "SELECT * FROM student WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $Email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $user = mysqli_fetch_assoc($result);
+
+    if ($user && password_verify($Password, $user['password'])) {
+        $_SESSION['user_logged_in'] = true;
+        $_SESSION['user_type'] = 'student'; // or 'faculty', 'alumni' based on the table
+        $_SESSION['username'] = $user['username'];
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "<script>alert('Invalid email or password');</script>";
     }
+}
 
 ?>
 
