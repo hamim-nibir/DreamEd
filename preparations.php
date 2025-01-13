@@ -1,3 +1,8 @@
+<?php
+// index.php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +19,7 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top bg-light">
+<nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">DreamEd</a>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -26,7 +30,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
+              <a class="nav-link active" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="universities.php">Universities</a>
@@ -35,7 +39,7 @@
               <a class="nav-link" href="#">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="preparations.php">Preparations</a>
+              <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Blogs</a>
@@ -56,17 +60,15 @@
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-            <!-- Logged-out menu -->
-            <div id="loggedOutMenu" class="d-none">
+          <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
-            </div>
-            <!-- Logged-in menu -->
-            <div id="loggedInMenu" class="d-none">
+            <?php else: ?>
+            
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
               <li><a class="dropdown-item" href="profile.php">Profile</a></li>
               <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-            </div>
+              <?php endif; ?>
           </ul>
         </li>
       </ul>
@@ -90,10 +92,10 @@
             </div>
             <!-- General Knowledge Card -->
             <div class="card">
-                <img src="images/general_knowledge.png" alt="General Knowledge" class="card-img">
+                <img src="assets/images/gk2.png" alt="General Knowledge" class="card-img">
                 <h3 class="card-title">General Knowledge</h3>
                 <p class="card-subtitle">Stay updated with the world</p>
-                <a href="general_knowledge.php" class="card-btn">Let's Go</a>
+                <a href="gk.php" class="card-btn">Let's Go</a>
             </div>
             <!-- Vocabulary Card -->
             <div class="card">

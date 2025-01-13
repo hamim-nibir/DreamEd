@@ -86,7 +86,7 @@ function isStudentLoggedIn() {
 
     <div class="content">
         <!-- Title and Subtitle -->
-        <h1 class="section-heading">Aptitude Tests</h1>
+        <h1 class="section-heading">General Knowledge Tests</h1>
         <p class="section-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         
         <!-- Quiz List -->
@@ -94,23 +94,23 @@ function isStudentLoggedIn() {
             <!-- Quiz Row -->
             <div class="quiz-row">
                 <div class="quiz-item serial">1</div>
-                <div class="quiz-item test-name">Logical Reasoning Test</div>
+                <div class="quiz-item test-name">Brain Busters: General Knowledge Challenge</div>
                 <div class="quiz-item question-count">10 Questions</div>
-                <a href="<?php echo isStudentLoggedIn() ? 'Aquiz1.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
+                <a href="<?php echo isStudentLoggedIn() ? 'Gquiz1.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
             </div>
             
             <div class="quiz-row">
                 <div class="quiz-item serial">2</div>
-                <div class="quiz-item test-name">Numerical Ability Test</div>
+                <div class="quiz-item test-name">Mind Marathon: Test Your GK</div>
                 <div class="quiz-item question-count">10 Questions</div>
-                <a href="<?php echo isStudentLoggedIn() ? 'Aquiz2.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
+                <a href="<?php echo isStudentLoggedIn() ? 'Gquiz2.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
             </div>
             
             <div class="quiz-row">
                 <div class="quiz-item serial">3</div>
-                <div class="quiz-item test-name">Data Interpretation Test</div>
+                <div class="quiz-item test-name">Smart Sparks: General Knowledge Test</div>
                 <div class="quiz-item question-count">10 Questions</div>
-                <a href="<?php echo isStudentLoggedIn() ? 'Aquiz3.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
+                <a href="<?php echo isStudentLoggedIn() ? 'Gquiz3.php' : 'login.php'; ?>" class="quiz-btn">Enter Quiz</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 /* Custom CSS */
 body{
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    /* background: linear-gradient(to right, #e2e2e2, #c9d6ff); */
+    background-color: #cef2e7;
   }
   .navbar {
     position: relative;
@@ -18,6 +19,7 @@ body{
   
   .nav-right {
     display: flex;
+    align-items: center;
     gap: 15px; /* Space between icons */
     position: absolute;
     top: 20px; /* Adjust vertical positioning */
@@ -30,6 +32,16 @@ body{
   .nav-right a {
     color: #000; /* Icon color */
     text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  .nav-right a:hover {
+    color: #666;
+  }
+  /* Dropdown menu styling */
+  .dropdown-menu {
+    width: 200px;
+    padding: 10px;
   }
   
   .nav-link{
