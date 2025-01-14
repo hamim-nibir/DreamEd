@@ -43,7 +43,7 @@ session_start();
               <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Blogs</a>
+              <a class="nav-link" href="blogs.php">Blogs</a>
             </li>
           </ul>
         </div>

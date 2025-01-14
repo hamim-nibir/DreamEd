@@ -35,7 +35,7 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="universities.php">Universities</a>
@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
                             <a class="nav-link" href="#">Scholarships</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="preparations.php">Preparations</a>
+                            <a class="nav-link active" href="preparations.php">Preparations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Blogs</a>
