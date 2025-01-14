@@ -90,57 +90,20 @@
 	  </div> 
 	</div> 
 	<div class="countries_dropdown">
-	  <input type="text" id="selectedItemsTextbox" readonly>
+	  <input type="text" id="selectedItemsTextbox" autocomplete="off">
 	  <button class="countries_dropdown-button">Select Countries</button>
+    <div class = "resultbox">
+    
+    </div>
+	  
 	  <div class="countries_dropdown-content">
-		  <label><input type="checkbox" class="dropdown-item" value="Item 1"> Item 1</label>
-		  <label><input type="checkbox" class="dropdown-item" value="Item 2"> Item 2</label>
-		  <label><input type="checkbox" class="dropdown-item" value="Item 3"> Item 3</label>
-		  <label><input type="checkbox" class="dropdown-item" value="Item 4"> Item 4</label>
-		  <label><input type="checkbox" class="dropdown-item" value="Item 5"> Item 5</label>
 	  </div>
 	</div>
 	<script src="/DreamEd/choices.min.js"></script>
 	
-	<div class = "tickbox">
-	  <label class="tickbox_container">Under Graduate
-		<input type="checkbox" >
-		<span class="checkmark"></span>
-	  </label>
-	
-	
-	
-	  <label class="tickbox_container">Post Graduate
-		<input type="checkbox" >
-		<span class="checkmark"></span>
-	  </label>
-	  
-	
-	  </div>
-	
-	
-	  <div>
-		<div class="slidecontainer">
-		  <style> .left-margin-for-acceptancerate { margin-left: 100px; font-size: 20px; }
-		  </style>
-	
-			<p class="left-margin-for-acceptancerate">Acceptance Rate: <span id="demo"></span></p>
-		  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-		</div>
-		</div>
-		
-	<script>
-		var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value; // Display the default slider value
-	
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = function() {
-	  output.innerHTML = this.value;
-	}
-	
 	
 	</script>
+	</div>
 	</div>
 	</div>
 	

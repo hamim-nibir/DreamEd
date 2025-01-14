@@ -84,10 +84,10 @@ background-color: red;
 
 
 .countries_dropdown {
-margin-top: 15px;
-margin-left: 10px;
+margin-top: 25px;
+margin-left: 0px;
 position: relative;
-display: inline-block;
+vertical-align: top;
 }
 
 #selectedItemsTextbox {
@@ -99,11 +99,13 @@ margin-bottom: 10px;
 .countries_dropdown-button {
 background-color: #4CAF50;
 color: white;
-padding: 16px;
-font-size: 16px;
+padding: 12px;
+font-size: 15px;
 border: none;
 cursor: pointer;
-margin-left: 30%;
+margin-left: 80.33%;
+vertical-align: top;
+margin-top: -55px;
 }
 
 .countries_dropdown-content {
@@ -134,8 +136,8 @@ display: block;
 
 
 .tickbox{
-margin-left: 400px;
-margin-top: -100px;
+margin-left: 455px;
+margin-top: -130px;
 }
 
 
@@ -143,6 +145,7 @@ margin-top: -100px;
 padding-left: 35px;
 margin-bottom: 12px;
 margin-left: 15px;
+margin-top: -40px;
 cursor: pointer;
 font-size: 25x;
 -webkit-user-select: none;
@@ -204,7 +207,7 @@ transform: rotate(45deg);
 }
 
 .slidecontainer{
-margin-left: 400px;
+margin-left: 470px;
 }
 
 .slider {
@@ -234,3 +237,25 @@ border-radius: 50%;
 background: #04AA6D;
 cursor: pointer;
 }
+
+
+.resultbox ul{
+  max-height: 300px;
+  position: absolute;
+  background-color: white;
+  border-top: 1px solid #999;
+  padding: 15px 15px;
+  margin-top: -35px;
+}
+
+.resultbox ul li{
+  list-style: none;
+  border-radius: 3px;
+  padding: 15px 15px;
+  cursor: pointer;
+}
+
+.resultbox ul li :hover{
+  background-color: #e9f3ff;
+}
+
