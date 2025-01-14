@@ -14,53 +14,58 @@
 </head>
 
 <body>
-<!-- backend code  -->
- <!-- registration  -->
- <?php 
-    if(isset($_POST["submit"])){
-      session_start();
-        $userName = $_POST["username"];
-        $Email = $_POST["email"];
-        $Password = $_POST["password"];
-        $Retype_password = $_POST["retype_password"];
-        $passwordHash = password_hash($Password, PASSWORD_DEFAULT);
-        $user_type = $_POST["user_type"];
+  <!-- backend code  -->
+  <!-- registration  -->
+  <?php
+  if (isset($_POST["submit"])) {
+    session_start();
+    $userName = $_POST["username"];
+    $Email = $_POST["email"];
+    $Password = $_POST["password"];
+    $Retype_password = $_POST["retype_password"];
+    $passwordHash = password_hash($Password, PASSWORD_DEFAULT);
+    $user_type = $_POST["user_type"];
 
-        require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
-        $sql = "SELECT * FROM student WHERE email = '$Email'";
-        $result = mysqli_query($conn, $sql);
-        $rowCount = mysqli_num_rows($result);
-        if($rowCount>0){
-            echo "<script>alert('Email already exists')</script>";
-        }
-        else if(strlen($Password) < 8){
-            echo "<script>alert('Password must be at least 8 characters')</script>";
-        }
-        else if($Password != $Retype_password){
-            echo "<script>alert('Password and Retype password must be the same')</script>";
-        }
-        else{
-            if($user_type == "student"){
-              $sql = "INSERT INTO student(username, email, password) VALUES (?, ?, ?)";
-            } 
-            else if($user_type == "faculty"){
-              $sql = "INSERT INTO faculty(username, email, password) VALUES (?, ?, ?)";
-            }
-            else if($user_type == "alumni"){
-              $sql = "INSERT INTO alumni(username, email, password) VALUES (?, ?, ?)";
-            }
-            $stmt = mysqli_stmt_init($conn);
-            $prepareStmt= mysqli_stmt_prepare($stmt, $sql);
-            if($prepareStmt){
-                mysqli_stmt_bind_param($stmt, "sss", $userName, $Email, $passwordHash);
-                mysqli_stmt_execute($stmt);
-                echo "<script>alert('Success!')</script>";
-            }
-            else{
-                die("Something went wrong");
-            }
-        }
+    require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+
+    // Validate user type to prevent SQL injection
+    $allowed_tables = ["student", "faculty", "alumni"];
+    if (!in_array($user_type, $allowed_tables)) {
+      echo "<script>alert('Invalid user type');</script>";
+      exit();
     }
+
+    // Check for duplicate username or email
+    $sql = "SELECT * FROM `$user_type` WHERE username = ? OR email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    if (!$stmt) {
+      echo "<script>alert('Failed to prepare query');</script>";
+      exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ss", $userName, $Email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+      echo "<script>alert('Username or Email already exists');</script>";
+    } else if (strlen($Password) < 8) {
+      echo "<script>alert('Password must be at least 8 characters');</script>";
+    } else if ($Password != $Retype_password) {
+      echo "<script>alert('Password and Retype password must be the same');</script>";
+    } else {
+      // Insert new user into the appropriate table
+      $sql = "INSERT INTO `$user_type` (username, email, password) VALUES (?, ?, ?)";
+      $stmt = mysqli_prepare($conn, $sql);
+      if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "sss", $userName, $Email, $passwordHash);
+        mysqli_stmt_execute($stmt);
+        echo "<script>alert('Registration Successful!');</script>";
+      } else {
+        echo "<script>alert('Something went wrong during registration');</script>";
+      }
+    }
+  }
+
   // login
   if (isset($_POST['btn_login'])) {
     session_start();
@@ -79,20 +84,21 @@
     $user = mysqli_fetch_assoc($result);
 
     if ($user && password_verify($Password, $user['password'])) {
-        $_SESSION['user_logged_in'] = true;
-        $_SESSION["user_type"] = $UserType;
-        $_SESSION['username'] = $user['username'];
-        header("Location: index.php");
-        exit();
+      $_SESSION['user_logged_in'] = true;
+      $_SESSION["user_type"] = $UserType;
+      $_SESSION['uid'] = $user['uid'];
+      $_SESSION['username'] = $user['username'];
+      header("Location: index.php");
+      exit();
     } else {
-        echo "<script>alert('Invalid email or password');</script>";
+      echo "<script>alert('Invalid email or password');</script>";
     }
-}
+  }
 
-?>
+  ?>
 
 
-<!-- frontend code  -->
+  <!-- frontend code  -->
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
@@ -135,15 +141,15 @@
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-          <?php if (!isset($_SESSION['user_logged_in'])): ?>
+            <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
             <?php else: ?>
-            
+
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
               <li><a class="dropdown-item" href="profile.php">Profile</a></li>
               <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-              <?php endif; ?>
+            <?php endif; ?>
           </ul>
         </li>
       </ul>
