@@ -1,3 +1,73 @@
+/* Custom CSS */
+
+.navbar {
+  position: relative;
+}
+.navbar-nav{
+  gap: 30px;
+}
+.navbar-brand {
+  margin-right: auto; /* Keeps the brand on the left */
+  font-weight: 500;
+  color: #009970;
+  font-size: 24px;
+  transition: 0.3s color;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+  position: absolute;
+  top: 20px; /* Adjust vertical positioning */
+  right: 15px; /* Adjust horizontal positioning */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-right a {
+  color: #000; /* Icon color */
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.nav-right a:hover {
+  color: #666;
+}
+/* Dropdown menu styling */
+.dropdown-menu {
+  width: 200px;
+  padding: 10px;
+}
+
+.nav-link{
+  color: #666777;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.15s ease-in-out;
+}
+.nav-link:hover, .nav-link.active{
+  color: #000;
+}
+.nav-link::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: #009970;
+  visibility: hidden;
+  transition: width 0.15s ease-in-out, visibility 0s;
+}
+.nav-link:hover::before, .nav-link.active::before{
+  width: 100%;
+  visibility: visible;
+}
+
+
 .UniSearchbar{
   margin-top: 50px;
   margin-left: 55px;
@@ -8,6 +78,7 @@
 
 .unirows{
   margin-top: -150px;
+  margin-bottom: -100px;
 }
 
 .FilterAndSearch {
@@ -95,11 +166,11 @@ margin-bottom: 10px;
 .countries_dropdown-button {
 background-color: #4CAF50;
 color: white;
-padding: 13px;
+padding: 12px;
 font-size: 15px;
 border: none;
 cursor: pointer;
-margin-left: 81.33%;
+margin-left: 80.33%;
 vertical-align: top;
 margin-top: -55px;
 }
@@ -132,8 +203,7 @@ display: block;
 
 
 .tickbox{
-margin-left: 455px;
-margin-top: -130px;
+  margin-left: 125px;
 }
 
 
@@ -203,11 +273,11 @@ transform: rotate(45deg);
 }
 
 .slidecontainer{
-margin-left: 470px;
+margin-left: 250px;
 }
 
 .slider {
-width: 100%;
+width: 50%;
 height: 15px;
 border-radius: 5px;
 outline: none;
