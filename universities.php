@@ -95,8 +95,10 @@
 			  <div class="col-md-6"> 
 				<div class="search-1"> 
 				  <i class='bx bx-search-alt'></i>
-				  <input type="text" placeholder="UX Designer"> 
+				  <form method="GET" action="">
+				  <input type="text" name = "uni_query" placeholder="Search University"> 
 				  <button>Search</button>
+				  
 				</div> 
 			  </div> 
 			   
@@ -104,8 +106,9 @@
 	  </div> 
 	</div> 
 	<div class="countries_dropdown">
-	  <input type="text" id="selectedItemsTextbox" autocomplete="off">
+	  <input type="text" name = "country_query" id="selectedItemsTextbox" autocomplete="off">
 	  <button class="countries_dropdown-button">Select Countries</button>
+	  </form>
     <div class = "resultbox">
     
     </div>
@@ -117,16 +120,17 @@
 
 	</div>
 
+<form  method = "POST" action="">
   <div class = "tickbox">
 	  <label class="tickbox_container">Under Graduate
-		<input type="checkbox" >
+		<input type="checkbox" name ="UG" >
 		<span class="checkmark"></span>
 	  </label>
 	
 	
 	
 	  <label class="tickbox_container">Post Graduate
-		<input type="checkbox" >
+		<input type="checkbox" name = "PG" >
 		<span class="checkmark"></span>
 	  </label>
 	  
@@ -138,7 +142,7 @@
 		  <style> .left-margin-for-acceptancerate { margin-left: 20px ; margin-top: 10px; font-size: 20px; }
 		  </style>
 			<p class="left-margin-for-acceptancerate">Acceptance Rate: <span id="demo"></span></p>
-		  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+		  <input type="range"  name = "rng" min="1" max="100" value="50" class="slider" id="myRange">
 		</div>
 		</div>
 		
@@ -153,8 +157,12 @@
 	}
 	</script>
 
+	<div>
+		<button class = "shei" name = "filter_search" > Filter Search </button>
+	</div>	
+</form>
 
-	</div>
+</div>
 	</div>
   </div>
 	
@@ -170,18 +178,51 @@
 			
 		<?php
 		
-  		require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";	
+		require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
+		
+		$uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
 
-		$sql = "SELECT img_url, title, preview_txt, tags FROM articles";
+		$country_query = isset($_GET['country_query']) ? $_GET['country_query'] : '';
+
+		$rng = isset($_POST['rng']) ? (double)$_POST['rng'] : 0;
+ 
+		$sql = "SELECT university_id, name, city, zip_code, country, acceptance_rate, description , website_link ,  image_url FROM university";
+		
+		if (!empty($uni_query) && empty($country_query)) {
+			$uni_query = $conn->real_escape_string($uni_query);
+			$sql .= " WHERE name LIKE '%$uni_query%'";
+		}
+		else if (empty($uni_query) && !empty($country_query)){
+			$country_query = $conn->real_escape_string($country_query);
+			$sql .= " WHERE country LIKE '%$country_query%'";
+		}
+		else if(!empty($uni_query) && !empty($country_query)){
+			$country_query = $conn->real_escape_string($country_query);
+			$uni_query = $conn->real_escape_string($uni_query);
+			$sql .= " WHERE name LIKE '%$uni_query%' AND  country LIKE '%$country_query%' ";
+		}
+
+		if ( ( !empty($uni_query) || !empty($country_query) ) && $rng > 0 ){
+			 $rng = $conn->real_escape_string($rng); 
+			 $sql .= " AND acceptance_rate <= $rng";
+		}
+		else if(empty($uni_query)==true && empty($country_query)==true && $rng > 0 ){
+			$rng = $conn->real_escape_string($rng); 
+			$sql .= " WHERE acceptance_rate <= $rng";
+		}
+		
+
+		echo $sql;
+		
+		
+		
 		$result = $conn->query($sql);
 		
-		$articles = [];
-
+		$universities = [];
+		
 		if ($result->num_rows > 0) {
-
 			while($row = $result->fetch_assoc()) {
-				$row['tags'] = explode(',', $row['tags']); // Assuming tags are stored as a comma-separated string
-				$articles[] = $row;
+				$universities[] = $row;
 			}
 		} else {
 			echo "0 results";
@@ -189,33 +230,37 @@
 		$conn->close();
 		?>
 		
-		<?php foreach ($articles as $article): ?>
-				<article class="postcard light blue">
-					<a class="postcard__img_link" href="#">
-						<img class="postcard__img" src="<?php echo $article['img_url']; ?>" alt="Image Title" />
-					</a>
-					<div class="postcard__text t-dark">
-						<h1 class="postcard__title blue"><a href="#"><?php echo $article['title']; ?></a></h1>
-						<div class="postcard__subtitle small">
-							<time datetime="<?php echo $article['datetime']; ?>">
-								<!-- <i class="fas fa-calendar-alt mr-2"></i><?php echo $article['date']; ?> -->
-							</time>
-						</div>
-						<div class="postcard__bar"></div>
-						<div class="postcard__preview-txt"><?php echo $article['preview_txt']; ?></div>
-						<ul class="postcard__tagbox">
-							<?php foreach ($article['tags'] as $tag): ?>
-								<li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $tag; ?></li>
-							<?php endforeach; ?>
-							<li class="tag__item play blue">
-								<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-							</li>
-						</ul>
-					</div>
-				</article>
-			
+		<?php foreach ($universities as $university): ?>
+    <article class="postcard light blue">
+        <a class="postcard__img_link" href="#">
+            <img class="postcard__img" src="<?php echo $university['image_url']; ?>" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+            <h1 class="postcard__title blue"><a href="#"><?php echo $university['name']; ?></a></h1>
+            <div class="postcard__subtitle small">
+                <time datetime="<?php echo $university['city']; ?>">
+                    <i class="fas fa-map-marker-alt mr-2"></i><?php echo $university['city']; ?>, <?php echo $university['country']; ?>
+                </time>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt"><?php echo $university['description']; ?></div>
+            <ul class="postcard__tagbox">
+                <!-- Assuming there's a `tags` column -->
+                <?php if (isset($university['tags'])): ?>
+                    <?php foreach (explode(',', $university['tags']) as $tag): ?>
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $tag; ?></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <li class="tag__item play blue">
+                    <a href= "<?php echo $university['website_link']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
+                </li>
+				<li class="tag__item"><i class="fas fa-clock mr-2"></i>Acceptance Rate <?php echo $university['acceptance_rate']; ?>%</li>
+            </ul>
+        </div>
+    </article>
+<?php endforeach; ?>
+
 		
-    <?php endforeach; ?>
 		</div>
 	</section>
 	</section>
@@ -228,6 +273,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom JS -->
   <script src="assets/js/index.js"></script>
+  <script src="/"></script>
 </body>
 
 </html>

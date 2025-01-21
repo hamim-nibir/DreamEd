@@ -26,7 +26,7 @@
     $passwordHash = password_hash($Password, PASSWORD_DEFAULT);
     $user_type = $_POST["user_type"];
 
-    require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+    require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
 
     // Validate user type to prevent SQL injection
     $allowed_tables = ["student", "faculty", "alumni"];
