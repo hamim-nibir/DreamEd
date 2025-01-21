@@ -1,8 +1,4 @@
 /* Custom CSS */
-body{
-  /* background: linear-gradient(to right, #e2e2e2, #c9d6ff); */
-  background-color: #cef2e7;
-}
 .navbar {
   position: relative;
 }
@@ -69,3 +65,329 @@ body{
   width: 100%;
   visibility: visible;
 }
+
+/* Custom CSS */
+
+.navbar {
+  position: relative;
+}
+.navbar-nav{
+  gap: 30px;
+}
+.navbar-brand {
+  margin-right: auto; /* Keeps the brand on the left */
+  font-weight: 500;
+  color: #009970;
+  font-size: 24px;
+  transition: 0.3s color;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+  position: absolute;
+  top: 20px; /* Adjust vertical positioning */
+  right: 15px; /* Adjust horizontal positioning */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-right a {
+  color: #000; /* Icon color */
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.nav-right a:hover {
+  color: #666;
+}
+/* Dropdown menu styling */
+.dropdown-menu {
+  width: 200px;
+  padding: 10px;
+}
+
+.nav-link{
+  color: #666777;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.15s ease-in-out;
+}
+.nav-link:hover, .nav-link.active{
+  color: #000;
+}
+.nav-link::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: #009970;
+  visibility: hidden;
+  transition: width 0.15s ease-in-out, visibility 0s;
+}
+.nav-link:hover::before, .nav-link.active::before{
+  width: 100%;
+  visibility: visible;
+}
+
+
+.UniSearchbar{
+  margin-top: 50px;
+  margin-left: 55px;
+  margin-bottom: 50px;
+ /* background-color: red; */
+
+}
+
+.unirows{
+  margin-top: -100px;
+  margin-bottom: -50px;
+}
+
+.FilterAndSearch {
+  background-image: linear-gradient(to right top,#D91B23,#124FEB);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.search-1 {
+  position: relative;
+  width: 700px;
+}
+
+.search-1 input {
+  height: 45px;
+  border: none;
+  width: 100%;
+  padding-left: 34px;
+  padding-right: 10px;
+  border-right: 2px solid #eee
+}
+
+.search-1 input:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: none
+}
+
+.search-1 i {
+  position: absolute;
+  top: 12px;
+  left: 5px;
+  font-size: 24px;
+  color: #eee
+}
+
+::placeholder {
+  color: #eee;
+  opacity: 1
+}
+
+
+
+
+.search-1 button {
+  position: absolute;
+  right: 1px;
+  top: 0px;
+  border: none;
+  height: 45px;
+  background-color: red;
+  color: #fff;
+  width: 90px;
+  border-radius: 4px
+}
+
+
+
+.colsearch{
+
+background-color: red;
+}
+
+
+
+
+.countries_dropdown {
+margin-top: 25px;
+margin-left: 0px;
+position: relative;
+vertical-align: top;
+}
+
+#selectedItemsTextbox {
+width: 100%;
+padding: 8px;
+margin-bottom: 10px;
+}
+
+.countries_dropdown-button {
+background-color: #4CAF50;
+color: white;
+padding: 12px;
+font-size: 15px;
+border: none;
+cursor: pointer;
+margin-left: 80.33%;
+vertical-align: top;
+margin-top: -55px;
+}
+
+.countries_dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.countries_dropdown-content label {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.countries_dropdown-content label:hover {
+background-color: #f1f1f1;
+}
+
+.show {
+display: block;
+}
+
+
+
+
+.tickbox{
+  margin-left: 125px;
+}
+
+
+.tickbox_container {
+padding-left: 35px;
+margin-bottom: 12px;
+margin-left: 15px;
+margin-top: -40px;
+cursor: pointer;
+font-size: 25x;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+
+}
+
+
+.tickbox_container input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+
+
+.checkmark {
+position: absolute;
+margin-left: 5px;
+height: 25px;
+width: 25px;
+background-color: #eee;
+}
+
+
+.tickbox_container:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+.tickbox_container input:checked ~ .checkmark {
+background-color: #2196F3;
+}
+
+
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+.tickbox_container input:checked ~ .checkmark:after {
+display: block;
+}
+
+
+.tickbox_container .checkmark:after {
+left: 9px;
+top: 5px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 3px 3px 0;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+
+.slidecontainer{
+margin-left: 250px;
+}
+
+.slider {
+width: 50%;
+height: 15px;
+border-radius: 5px;
+outline: none;
+opacity: 0.7;
+-webkit-transition: .2s;
+transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 25px;
+height: 25px;
+border-radius: 50%; 
+background: #04AA6D;
+cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+width: 25px;
+height: 25px;
+border-radius: 50%;
+background: #04AA6D;
+cursor: pointer;
+}
+
+
+.resultbox ul{
+  max-height: 300px;
+  position: absolute;
+  background-color: white;
+  border-top: 1px solid #999;
+  padding: 15px 15px;
+  margin-top: -35px;
+}
+
+.resultbox ul li{
+  list-style: none;
+  border-radius: 3px;
+  padding: 15px 15px;
+  cursor: pointer;
+}
+
+.resultbox ul li :hover{
+  background-color: #e9f3ff;
+}
+
+
