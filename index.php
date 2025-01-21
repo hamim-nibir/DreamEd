@@ -37,7 +37,7 @@ session_start();
               <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Scholarships</a>
+              <a class="nav-link" href="scholarships.php">Scholarships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="preparations.php">Preparations</a>

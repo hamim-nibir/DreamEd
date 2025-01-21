@@ -1,61 +1,283 @@
+<?php
+// index.php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarships | DreamEd</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">   <!--Fixed Location issues--->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarships | DreamEd</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/scholarship.css">
+  <link rel="stylesheet" href="assets/css/card.css">
 </head>
+
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-transparent">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/index.php">
-            <img class="brandlogo" src="/assets//images/placeholderlogo.png" alt="LOGO">
-          </a>  <!--Added an reference placeholder logo image-->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="/index.php">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Universities</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Scholarships</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="preparations.php">Preparations</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blogs</a>
-              </li>
-            </ul>
-            <div class="nav-right">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">  <!--Added tooltip for icons without text-->
-                  <div class="nav-right-icons">
-                    <li class="nav-right-items"><i class="fa-solid fa-magnifying-glass fa-lg"></i> <span class = "tooltiptext">Search</span></li>
-                  </div>
-                  <div class="nav-right-icons">
-                    <li class="nav-right-items"><i class="fa-regular fa-message fa-lg"></i><span class = "tooltiptext">Messages</span></li>
-                  </div>
-                  <div class="nav-right-icons">  
-                    <li class="nav-right-items"><i class="fa-regular fa-user fa-lg"></i><span class = "tooltiptext">Profile</span></li>
-                  </div>
-                </ul>
-            </div>
-          </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">DreamEd</a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
-    <!-- navbar -->
-    <div>
-        <p>This is Scholarships page.</p>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="universities.php">Universities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="scholarships.php">Scholarships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="preparations.php">Preparations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blogs.php">Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right-side icons -->
+      <ul class="nav-right">
+        <!-- Search Icon -->
+        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <!-- Message Icon -->
+        <li><a href="#"><i class="far fa-comment"></i></a></li>
+        <!-- User Icon with Dropdown -->
+        <li class="dropdown">
+          <a href="#" id="userIcon" class="d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
+            <?php if (!isset($_SESSION['user_logged_in'])): ?>
+              <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
+            <?php else: ?>
+              <?php if ($_SESSION['user_type'] === 'student'): ?>
+                <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <?php elseif ($_SESSION['user_type'] === 'faculty' || $_SESSION['user_type'] === 'admin'): ?>
+                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+              <?php endif; ?>
+              <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+            <?php endif; ?>
+          </ul>
+        </li>
+      </ul>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </nav>
+
+  <!---navbarend--->
+
+
+  <div class = unirows>
+    
+
+		<div class = "FilterAndSearch">	
+			<div>
+		  <div class="UniSearchbar">
+			<h2>Find The Best Scholarships For Your Study</h2>
+		</div> 
+		
+		<div class="search_container"> 
+		  <div class="search"> 
+			<div class="row"> 
+			  <div class="col-md-6"> 
+				<div class="search-1"> 
+				  <i class='bx bx-search-alt'></i>
+				  <form method="GET" action="">
+				  <input type="text" name = "uni_query" placeholder="Search For Scholarships"> 
+				  <button>Search</button>
+				  
+				</div> 
+			  </div> 
+			   
+		</div> 
+	  </div> 
+	</div> 
+	<div class="countries_dropdown">
+	  <input type="text" name = "country_query" id="selectedItemsTextbox" autocomplete="off">
+	  <button class="countries_dropdown-button">Select Countries</button>
+	  </form>
+    <div class = "resultbox">
+    
+    </div>
+	  
+	  <div class="countries_dropdown-content">
+	  </div>
+
+    <script src="DreamEd/choices.min.js"></script>
+
+	</div>
+
+<form  method = "POST" action="">
+  <div class = "tickbox">
+	  <label class="tickbox_container">Under Graduate
+		<input type="checkbox" name ="UG" >
+		<span class="checkmark"></span>
+	  </label>
+	
+	
+	
+	  <label class="tickbox_container">Post Graduate
+		<input type="checkbox" name = "PG" >
+		<span class="checkmark"></span>
+	  </label>
+	  
+	
+	  </div>
+  
+    <div>
+		<div class="slidecontainer">
+		  <style> .left-margin-for-acceptancerate { margin-left: 20px ; margin-top: 10px; font-size: 20px; }
+		  </style>
+			<p class="left-margin-for-acceptancerate">Acceptance Rate: <span id="demo"></span></p>
+		  <input type="range"  name = "rng" min="1" max="100000" value="50000" class="slider" id="myRange">
+		</div>
+		</div>
+		
+	<script>
+		var slider = document.getElementById("myRange");
+	var output = document.getElementById("demo");
+	output.innerHTML = slider.value; // Display the default slider value
+	
+	// Update the current slider value (each time you drag the slider handle)
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	}
+	</script>
+
+	<div>
+		<button class = "shei" name = "filter_search" > Filter Search </button>
+	</div>	
+</form>
+
+</div>
+	</div>
+  </div>
+	
+
+
+
+	<section class = cardbody>
+
+	<section class="light">
+		<div class="container py-2">
+			<div class="h1 text-center text-dark" id="pageHeaderTitle">Universities</div>
+	
+			
+		<?php
+		
+		require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
+		
+		$uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
+
+		$country_query = isset($_GET['country_query']) ? $_GET['country_query'] : '';
+
+		$rng = isset($_POST['rng']) ? (double)$_POST['rng'] : 0;
+ 
+		$sql = "SELECT name, amount, description, image_url, scholarship_url , country FROM scholarship";
+		
+		if (!empty($uni_query) && empty($country_query)) {
+			$uni_query = $conn->real_escape_string($uni_query);
+			$sql .= " WHERE name LIKE '%$uni_query%'";
+		}
+		else if (empty($uni_query) && !empty($country_query)){
+			$country_query = $conn->real_escape_string($country_query);
+			$sql .= " WHERE country LIKE '%$country_query%'";
+		}
+		else if(!empty($uni_query) && !empty($country_query)){
+			$country_query = $conn->real_escape_string($country_query);
+			$uni_query = $conn->real_escape_string($uni_query);
+			$sql .= " WHERE name LIKE '%$uni_query%' AND  country LIKE '%$country_query%' ";
+		}
+
+		if ( ( !empty($uni_query) || !empty($country_query) ) && $rng > 0 ){
+			 $rng = $conn->real_escape_string($rng); 
+			 $sql .= " AND acceptance_rate <= $rng";
+		}
+		else if(empty($uni_query)==true && empty($country_query)==true && $rng > 0 ){
+			$rng = $conn->real_escape_string($rng); 
+			$sql .= " WHERE acceptance_rate <= $rng";
+		}
+		
+
+		echo $sql;
+		
+		
+		
+		$result = $conn->query($sql);
+		
+		$universities = [];
+		
+		if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+				$universities[] = $row;
+			}
+		} else {
+			echo "0 results";
+		}
+		$conn->close();
+		?>
+		
+		<?php foreach ($universities as $university): ?>
+    <article class="postcard light blue">
+        <a class="postcard__img_link" href="#">
+            <img class="postcard__img" src="" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+            <h1 class="postcard__title blue"><a href="#"><?php echo $university['name']; ?></a></h1>
+            <div class="postcard__subtitle small">
+                <time datetime="<?php echo $university['city']; ?>">
+                    <i class="fas fa-map-marker-alt mr-2"></i><?php echo $university['country']; ?>
+                </time>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt"><?php echo $university['description']; ?></div>
+            <ul class="postcard__tagbox">
+                <!-- Assuming there's a `tags` column -->
+                <?php if (isset($university['tags'])): ?>
+                    <?php foreach (explode(',', $university['tags']) as $tag): ?>
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $tag; ?></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <li class="tag__item play blue">
+                    <a href= "<?php echo $university['scholarship_url']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
+                </li>
+				<li class="tag__item"><i class="fas fa-clock mr-2"></i>Acceptance Rate <?php echo $university['ammount']; ?>%</li>
+            </ul>
+        </div>
+    </article>
+<?php endforeach; ?>
+
+		
+		</div>
+	</section>
+	</section>
+	</div>
+	
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/index.js"></script>
 </body>
+
 </html>
