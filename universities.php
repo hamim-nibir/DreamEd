@@ -12,6 +12,21 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/universities.css">
   <link rel="stylesheet" href="assets/css/card.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+  font-family: 'Roboto', serif;
+}
+.navbar-brand {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-right: auto; /* Keeps the brand on the left */
+  font-weight: 800;
+  color: #009970;
+  font-size: 26px;
+  transition: 0.3s color;
+}
+  </style>
   
 </head>
 

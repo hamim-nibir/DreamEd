@@ -17,12 +17,24 @@ session_start();
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/index.css">
   <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+  font-family: 'Roboto', serif;
+}
+.navbar-brand {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-right: auto;
+  font-weight: 800;
+  color: #009970;
+  font-size: 26px;
+  transition: 0.3s color;
+}
     
-.hero-section {
+    .hero-section {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   position: relative;
-  /* background: url('/assets/images/hero-img.png') no-repeat center center/cover; */
-  background: transparent;
-  height: 100vh;
+  background: url('assets/images/home-bg.jpg') no-repeat center center/cover;
+  height: 100vh; 
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -32,8 +44,26 @@ session_start();
   padding: 20px;
 }
 
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.01);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
 .hero-heading {
   color: #009970;
+  /* color: red; */
   font-size: 3rem;
   margin: 0;
   font-weight: bold;
@@ -102,7 +132,7 @@ session_start();
               <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Scholarships</a>
+              <a class="nav-link" href="scholarships.php">Scholarships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="preparations.php">Preparations</a>
@@ -117,7 +147,7 @@ session_start();
       <!-- Right-side icons -->
       <ul class="nav-right">
         <!-- Search Icon -->
-        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <li><a href="universities.php"><i class="fas fa-search"></i></a></li>
         <!-- message Icon -->
         <li><a href="#"><i class="far fa-comment"></i></a></li>
         <!-- User Icon with Dropdown -->
@@ -144,19 +174,18 @@ session_start();
   </nav>
 
   <div class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-heading">Welcome to DreamEd</h1>
-            <h2 class="hero-subtitle">
-                <span class="animated-text">Explore endless possibilities</span>
-            </h2>
-            <p class="hero-description">
-                Discover opportunities, connect with others, and grow your potential. Join us to achieve more.
-            </p>
+  <div class="hero-content">
+    <h1 class="hero-heading">Welcome to DreamEd</h1>
+    <h2 class="hero-subtitle">
+      <span class="animated-text">Explore endless possibilities</span>
+    </h2>
+    <p class="hero-description">
+      Discover opportunities, connect with others, and grow your potential. Join us to achieve more.
+    </p>
+    <a href="universities.php" class="hero-btn">Explore</a>
+  </div>
+</div>
 
-            <a href="universities.php" class="hero-btn">Explore</a>
-        </div>
-    </div>
-    </div>
 
     <script>
         const phrases = [
