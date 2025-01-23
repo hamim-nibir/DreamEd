@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+
+require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_logged_in']) || !$_SESSION['user_logged_in']) {

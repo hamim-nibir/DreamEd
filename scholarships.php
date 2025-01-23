@@ -185,7 +185,7 @@ session_start();
 			
 		<?php
 		
-		require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+    require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
 		
 		$uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
 
@@ -211,11 +211,11 @@ session_start();
 
 		if ( ( !empty($uni_query) || !empty($country_query) ) && $rng > 0 ){
 			 $rng = $conn->real_escape_string($rng); 
-			 $sql .= " AND acceptance_rate <= $rng";
+			 $sql .= " AND ammount <= $rng";
 		}
 		else if(empty($uni_query)==true && empty($country_query)==true && $rng > 0 ){
 			$rng = $conn->real_escape_string($rng); 
-			$sql .= " WHERE acceptance_rate <= $rng";
+			$sql .= " WHERE ammount <= $rng";
 		}
 		
 
@@ -261,7 +261,7 @@ session_start();
                 <li class="tag__item play blue">
                     <a href= "<?php echo $university['scholarship_url']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
                 </li>
-				<li class="tag__item"><i class="fas fa-clock mr-2"></i>Scholarship Ammount<?php echo $university['ammount']; ?>%</li>
+				<li class="tag__item"><i class="fas fa-clock mr-2"></i>Scholarship Ammount<?php echo $university['ammount']; ?></li>
             </ul>
         </div>
     </article>

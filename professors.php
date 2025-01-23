@@ -1,8 +1,3 @@
-<?php
-// index.php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +16,6 @@ session_start();
 </head>
 
 <body>
-  
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
@@ -41,13 +34,13 @@ session_start();
               <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="scholarships.php">Scholarships</a>
+              <a class="nav-link" href="scholarships.php">Scholarships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blogs.php">Blogs</a>
+              <a class="nav-link" href="#">Blogs</a>
             </li>
           </ul>
         </div>
@@ -57,7 +50,7 @@ session_start();
       <ul class="nav-right">
         <!-- Search Icon -->
         <li><a href="#"><i class="fas fa-search"></i></a></li>
-        <!-- Message Icon -->
+        <!-- message Icon -->
         <li><a href="#"><i class="far fa-comment"></i></a></li>
         <!-- User Icon with Dropdown -->
         <li class="dropdown">
@@ -65,18 +58,17 @@ session_start();
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-            <?php if (!isset($_SESSION['user_logged_in'])): ?>
+            <!-- Logged-out menu -->
+            <div id="loggedOutMenu" class="d-none">
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
-            <?php else: ?>
-              <?php if ($_SESSION['user_type'] === 'student'): ?>
-                <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                <li><a class="dropdown-item" href="settings.php">Settings</a></li>
-              <?php elseif ($_SESSION['user_type'] === 'faculty' || $_SESSION['user_type'] === 'admin'): ?>
-                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-              <?php endif; ?>
+            </div>
+            <!-- Logged-in menu -->
+            <div id="loggedInMenu" class="d-none">
+              <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-            <?php endif; ?>
+            </div>
           </ul>
         </li>
       </ul>
@@ -87,13 +79,14 @@ session_start();
     </div>
   </nav>
 
+
   <div class = unirows>
     
 
 		<div class = "FilterAndSearch">	
 			<div>
 		  <div class="UniSearchbar">
-			<h2>Find The Best Destination For Your Study</h2>
+			<h2>Find The Best Professors For Your Study</h2>
 		</div> 
 		
 		<div class="search_container"> 
@@ -183,7 +176,8 @@ session_start();
 			<div class="h1 text-center text-dark" id="pageHeaderTitle">Universities</div>
 	
 			
-	<?php
+		<?php
+		
 		require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
 		
 		$uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
@@ -218,6 +212,7 @@ session_start();
 		}
 		
 
+		echo $sql;
 		
 		
 		
@@ -260,26 +255,12 @@ session_start();
                     <a href= "<?php echo $university['website_link']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
                 </li>
 				<li class="tag__item"><i class="fas fa-clock mr-2"></i>Acceptance Rate <?php echo $university['acceptance_rate']; ?>%</li>
-      
-        <?php
-if (isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in']) {
-?>
-    <li class="tag__item play blue">
-        <a href="professors.php?uni_name=<?php echo urlencode($university['name']); ?>">
-            <i class="fas fa-play mr-2"></i>Alumni From Your Universities 
-        </a>
-    </li>
-<?php 
-}
-?>
+        <li class="tag__item play blue">
 
-<li class="tag__item play blue">
-        <a href="professors.php?uni_name=<?php echo urlencode($university['name']); ?>">
-            <i class="fas fa-play mr-2"></i>Professors From This University 
-        </a>
-    </li>
-        
+          <a href="professors.php?uni_name=<?php echo urlencode($university['name']); ?>"> <i class="fas fa-play mr-2"></i>See More</a>
 
+                   
+                </li>
             </ul>
         </div>
     </article>

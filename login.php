@@ -72,7 +72,8 @@
     $Email = $_POST['email'];
     $Password = $_POST['password'];
     $UserType = $_POST["user_type"];
-    require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+
+		require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
     $tableName = $UserType;
 
     // Check student table
