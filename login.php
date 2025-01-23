@@ -26,7 +26,7 @@
     $passwordHash = password_hash($Password, PASSWORD_DEFAULT);
     $user_type = $_POST["user_type"];
 
-    require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
+    require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
 
     // Validate user type to prevent SQL injection
     $allowed_tables = ["student", "faculty", "alumni"];
@@ -89,6 +89,7 @@
       $_SESSION['uid'] = $user['uid'];
       $_SESSION['username'] = $user['username'];
       header("Location: index.php");
+      echo "<script>alert('Logged in successfully!');</script>";
       exit();
     } else {
       echo "<script>alert('Invalid email or password');</script>";

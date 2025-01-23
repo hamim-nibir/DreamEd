@@ -174,11 +174,10 @@
 	<section class="light">
 		<div class="container py-2">
 			<div class="h1 text-center text-dark" id="pageHeaderTitle">Universities</div>
-	
-			
+
 		<?php
 		
-		require_once "/opt/lampp/htdocs/university/DreamEd/partials/DBconnection.php";
+		require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
 		
 		$uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
 
@@ -208,11 +207,10 @@
 		}
 		else if(empty($uni_query)==true && empty($country_query)==true && $rng > 0 ){
 			$rng = $conn->real_escape_string($rng); 
-			$sql .= " WHERE acceptance_rate <= $rng";
+			$sql .= " WHERE acceptance_rate >= $rng";
 		}
 		
 
-		echo $sql;
 		
 		
 		

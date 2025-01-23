@@ -16,6 +16,71 @@ session_start();
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/index.css">
+  <style>
+    
+.hero-section {
+  position: relative;
+  /* background: url('/assets/images/hero-img.png') no-repeat center center/cover; */
+  background: transparent;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-heading {
+  color: #009970;
+  font-size: 3rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: black;
+}
+
+.animated-text {
+  color: black;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-description {
+  color: black;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+.hero-btn {
+  background-color: #009970;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #007a5c;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+  </style>
 </head>
 
 <body>
@@ -37,7 +102,7 @@ session_start();
               <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="scholarships.php">Scholarships</a>
+              <a class="nav-link" href="#">Scholarships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="preparations.php">Preparations</a>
@@ -79,6 +144,36 @@ session_start();
       </button>
     </div>
   </nav>
+
+  <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-heading">Welcome to DreamEd</h1>
+            <h2 class="hero-subtitle">
+                <span class="animated-text">Explore endless possibilities</span>
+            </h2>
+            <p class="hero-description">
+                Discover opportunities, connect with others, and grow your potential. Join us to achieve more.
+            </p>
+
+            <a href="universities.php" class="hero-btn">Explore</a>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        const phrases = [
+            "Explore endless possibilities",
+            "Achieve your dreams",
+            "Connect and grow with us"
+        ];
+        let index = 0;
+        const animatedText = document.querySelector(".animated-text");
+
+        setInterval(() => {
+            index = (index + 1) % phrases.length;
+            animatedText.textContent = phrases[index];
+        }, 2000);
+    </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

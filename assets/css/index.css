@@ -1,8 +1,10 @@
-/* Custom CSS */
+/* Custom CSS  */
 body{
   /* background: linear-gradient(to right, #e2e2e2, #c9d6ff); */
   background-color: #cef2e7;
+  /* background: transparent; */
 }
+
 .navbar {
   position: relative;
 }
@@ -69,3 +71,5 @@ body{
   width: 100%;
   visibility: visible;
 }
+
+
