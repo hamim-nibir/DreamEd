@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php"; // Include your DB connection
+require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_logged_in']) || !$_SESSION['user_logged_in']) {
@@ -26,8 +26,10 @@ if (!$user) {
     $fullName = $user['first_name'] . " " . $user['last_name'];
     $email = $user['email'];
     $contactNumber = $user['contact_no'];
-    $dob = $user['dob'];
-    $bloodGroup = $user['blood_grp'];
+    if ($user_type == 'student') {
+        $dob = $user['dob'];
+        $bloodGroup = $user['blood_grp'];
+    }
 }
 
 // Handle document upload
@@ -89,13 +91,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_doc_id'])) {
     $docPathStmt->close();
 }
 
-// Fetch academic records for the logged-in student
 $academicRecords = [];
-$academicSql = "SELECT * FROM academic_background WHERE sid = ? ORDER BY academic_id DESC";
+if ($user_type === 'student') {
+    $academicSql = "SELECT * FROM academic_background WHERE sid = ? ORDER BY academic_id DESC";
+} else if ($user_type === 'alumni') {
+    $academicSql = "SELECT * FROM academic_background WHERE fid = ? ORDER BY academic_id DESC";
+} else if ($user_type === 'faculty'){
+    $academicSql = "SELECT * FROM academic_background WHERE aid = ? ORDER BY academic_id DESC";
+}
+
+// fid = alumni id and aid = faculty id
 $academicStmt = mysqli_prepare($conn, $academicSql);
-mysqli_stmt_bind_param($academicStmt, "i", $uid);
-mysqli_stmt_execute($academicStmt);
-$academicResult = mysqli_stmt_get_result($academicStmt);
+    mysqli_stmt_bind_param($academicStmt, "i", $uid);
+    mysqli_stmt_execute($academicStmt);
+    $academicResult = mysqli_stmt_get_result($academicStmt);
+
+
 
 while ($row = mysqli_fetch_assoc($academicResult)) {
     $academicRecords[] = $row;
@@ -144,7 +155,7 @@ mysqli_close($conn);
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="universities.php">Universities</a>
@@ -179,8 +190,7 @@ mysqli_close($conn);
                         <?php else: ?>
 
                             <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                            <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+                            <li><a class="dropdown-item" href="edit_profile.php"> Edit Profile</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                         <?php endif; ?>
                     </ul>
@@ -195,7 +205,7 @@ mysqli_close($conn);
 
     <!-- Sidebar and Main Content -->
     <div class="sidebar">
-        <h2>Student Dashboard</h2>
+        <h2><?php echo strtoupper($user_type) ?> DASHBOARD</h2>
         <ul>
             <li><a href="#" onclick="showSection('personal-info')">Personal Information</a></li>
             <li><a href="#" onclick="showSection('academic-info')">Academic Information</a></li>
@@ -210,8 +220,11 @@ mysqli_close($conn);
             <p><strong>Name:</strong> <?= htmlspecialchars($fullName) ?></p>
             <p><strong>Contact Number:</strong> <?= htmlspecialchars($contactNumber) ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
-            <p><strong>Date of Birth:</strong> <?= htmlspecialchars($dob) ?></p>
-            <p><strong>Blood Group:</strong> <?= htmlspecialchars($bloodGroup) ?></p>
+            <?php if ($user_type === 'student'): ?>
+                <p><strong>Date of Birth:</strong> <?= htmlspecialchars($dob) ?></p>
+                <p><strong>Blood Group:</strong> <?= htmlspecialchars($bloodGroup) ?></p>
+            <?php endif; ?>
+
         </div>
         <!-- Academic Information Section -->
         <div id="academic-info" class="section">

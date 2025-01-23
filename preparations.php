@@ -63,9 +63,8 @@ session_start();
           <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
             <?php else: ?>
-            
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+              <li><a class="dropdown-item" href="profile.php">Edit Profile</a></li>
               <li><a class="dropdown-item" href="settings.php">Settings</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
               <?php endif; ?>
