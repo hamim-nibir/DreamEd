@@ -20,6 +20,25 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/quiz1.css">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      /* background-color: #ebbd3d; */
+      background-color: #b3d9ff;
+      font-family: 'Roboto', serif;
+    }
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+  </style>
 </head>
 
 <body>

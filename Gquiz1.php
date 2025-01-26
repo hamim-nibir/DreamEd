@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     body {
       /* background-color: #ebbd3d; */
-      background-color: #deebee;
+      background-color: #b3d9ff;
       font-family: 'Roboto', serif;
     }
 

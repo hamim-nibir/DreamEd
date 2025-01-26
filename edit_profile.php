@@ -29,6 +29,10 @@ if (!$user) {
     if ($user_type == 'student') {
         $dob = $user['dob'];
         $bloodGroup = $user['blood_grp'];
+    } elseif ($user_type == 'faculty') {
+        $currentInstitute = $user['current_institute'];
+        $designation = $user['designation'];
+        $researchInterest = $user['research_interest'];
     }
 }
 
@@ -46,6 +50,23 @@ mysqli_close($conn);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            /* background-color: #ebbd3d; */
+            background-color: #b3d9ff;
+            font-family: 'Roboto', serif;
+        }
+
+        .navbar-brand {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-right: auto;
+            font-weight: 800;
+            color: #009970;
+            font-size: 26px;
+            transition: 0.3s color;
+        }
+
         .section {
             display: none;
         }
@@ -75,13 +96,13 @@ mysqli_close($conn);
                             <a class="nav-link" href="universities.php">Universities</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Scholarships</a>
+                            <a class="nav-link" href="scholarships.php">Scholarships</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="preparations.php">Preparations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="blogs.php">Blogs</a>
                         </li>
                     </ul>
                 </div>
@@ -90,7 +111,7 @@ mysqli_close($conn);
             <!-- Right-side icons -->
             <ul class="nav-right">
                 <!-- Search Icon -->
-                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="universities.php"><i class="fas fa-search"></i></a></li>
                 <!-- message Icon -->
                 <li><a href="#"><i class="far fa-comment"></i></a></li>
                 <!-- User Icon with Dropdown -->
@@ -103,8 +124,7 @@ mysqli_close($conn);
                             <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
                         <?php else: ?>
                             <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="profile.php"> Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+                            <li><a class="dropdown-item" href="edit_profile.php"> Edit Profile</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                         <?php endif; ?>
                     </ul>
@@ -140,24 +160,38 @@ mysqli_close($conn);
                     <input type="tel" class="form-control" id="contactNo" name="contact_no" placeholder="Enter your contact number">
                 </div>
                 <div class="mb-3">
-                    <input type="date" class="form-control" id="dob" name="dob">
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" id="bloodGroup" name="blood_group">
-                        <option value="" disabled selected>Select your blood group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
-                </div>
-                <div class="mb-3">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
                 </div>
+
+                <?php if ($user_type == 'student'): ?>
+                    <div class="mb-3">
+                        <input type="date" class="form-control" id="dob" name="dob">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="bloodGroup" name="blood_group">
+                            <option value="" disabled selected>Select your blood group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                <?php elseif ($user_type == 'faculty'): ?>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="currentInstitute" name="current_institute" placeholder="Enter your current institute">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="designation" name="designation" placeholder="Enter your designation">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="researchInterest" name="research_interest" rows="3" placeholder="Enter your research interests"></textarea>
+                    </div>
+                <?php endif; ?>
+
                 <button type="submit" class="btn btn-primary w-100">Update</button>
             </form>
         </div>

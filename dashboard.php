@@ -30,6 +30,11 @@ if (!$user) {
         $dob = $user['dob'];
         $bloodGroup = $user['blood_grp'];
     }
+    if($user_type == 'faculty'){
+        $designation = $user['designation'];
+        $currentInstitute = $user['current_institute'];
+        $researchInterest = $user['research_interest'];
+    }
 }
 
 // Handle document upload
@@ -135,11 +140,30 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      /* background-color: #ebbd3d; */
+      background-color: #b3d9ff;
+      font-family: 'Roboto', serif;
+    }
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+  </style>
 </head>
 
 <body>
@@ -161,13 +185,13 @@ mysqli_close($conn);
                             <a class="nav-link" href="universities.php">Universities</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Scholarships</a>
+                            <a class="nav-link" href="scholarships.php">Scholarships</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="preparations.php">Preparations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="blogs.php">Blogs</a>
                         </li>
                     </ul>
                 </div>
@@ -176,7 +200,7 @@ mysqli_close($conn);
             <!-- Right-side icons -->
             <ul class="nav-right">
                 <!-- Search Icon -->
-                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="universities.php"><i class="fas fa-search"></i></a></li>
                 <!-- message Icon -->
                 <li><a href="#"><i class="far fa-comment"></i></a></li>
                 <!-- User Icon with Dropdown -->
@@ -223,6 +247,11 @@ mysqli_close($conn);
             <?php if ($user_type === 'student'): ?>
                 <p><strong>Date of Birth:</strong> <?= htmlspecialchars($dob) ?></p>
                 <p><strong>Blood Group:</strong> <?= htmlspecialchars($bloodGroup) ?></p>
+            <?php endif; ?>
+            <?php if ($user_type === 'faculty'): ?>
+                <p><strong>Designation:</strong> <?= htmlspecialchars($designation) ?></p>
+            <p><strong>Institute:</strong> <?= htmlspecialchars($currentInstitute) ?></p>
+            <p><strong>Research Interests:</strong> <?= htmlspecialchars($researchInterest) ?></p>
             <?php endif; ?>
 
         </div>

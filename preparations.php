@@ -21,7 +21,7 @@ session_start();
 
     body {
       /* background-color: #ebbd3d; */
-      background-color: #deebee;
+      background-color: #b3d9ff;
       font-family: 'Roboto', serif;
     }
 
@@ -69,7 +69,7 @@ session_start();
       <!-- Right-side icons -->
       <ul class="nav-right">
         <!-- Search Icon -->
-        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <li><a href="universities.php"><i class="fas fa-search"></i></a></li>
         <!-- message Icon -->
         <li><a href="#"><i class="far fa-comment"></i></a></li>
         <!-- User Icon with Dropdown -->
