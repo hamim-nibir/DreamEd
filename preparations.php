@@ -16,10 +16,28 @@ session_start();
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/preparations.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      /* background-color: #ebbd3d; */
+      background-color: #deebee;
+      font-family: 'Roboto', serif;
+    }
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+  </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg fixed-top bg-light">
+  <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">DreamEd</a>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -60,14 +78,13 @@ session_start();
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-          <?php if (!isset($_SESSION['user_logged_in'])): ?>
+            <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
             <?php else: ?>
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-              <li><a class="dropdown-item" href="profile.php">Edit Profile</a></li>
-              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <li><a class="dropdown-item" href="edit_profile.php">Edit Profile</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-              <?php endif; ?>
+            <?php endif; ?>
           </ul>
         </li>
       </ul>
@@ -80,45 +97,45 @@ session_start();
 
   <!-- Main Content -->
   <div class="content">
-        <h1 class="section-heading">Choose a Category</h1>
-        <div class="card-container">
-            <!-- Aptitude Test Card -->
-            <div class="card">
-                <img src="assets/images/a.jpg" alt="Aptitude Test" class="card-img">
-                <h3 class="card-title">Aptitude Test</h3>
-                <p class="card-subtitle">Sharpen your logical reasoning skills</p>
-                <a href="aptitude.php" class="card-btn">Let's Go</a>
-            </div>
-            <!-- General Knowledge Card -->
-            <div class="card">
-                <img src="assets/images/gk2.png" alt="General Knowledge" class="card-img">
-                <h3 class="card-title">General Knowledge</h3>
-                <p class="card-subtitle">Stay updated with the world</p>
-                <a href="gk.php" class="card-btn">Let's Go</a>
-            </div>
-            <!-- Vocabulary Card -->
-            <div class="card">
-                <img src="images/vocabulary.png" alt="Vocabulary" class="card-img">
-                <h3 class="card-title">Vocabulary</h3>
-                <p class="card-subtitle">Expand your word bank</p>
-                <a href="vocabulary.php" class="card-btn">Let's Go</a>
-            </div>
-            <!-- Grammar Card -->
-            <div class="card">
-                <img src="images/grammar.png" alt="Grammar" class="card-img">
-                <h3 class="card-title">Grammar</h3>
-                <p class="card-subtitle">Master the rules of language</p>
-                <a href="grammar.php" class="card-btn">Let's Go</a>
-            </div>
-            <!-- Math Card -->
-            <div class="card">
-                <img src="images/math.png" alt="Math" class="card-img">
-                <h3 class="card-title">Math</h3>
-                <p class="card-subtitle">Improve your problem-solving skills</p>
-                <a href="math.php" class="card-btn">Let's Go</a>
-            </div>
-        </div>
+    <h1 class="section-heading">Choose a Category</h1>
+    <div class="card-container">
+      <!-- Aptitude Test Card -->
+      <div class="card">
+        <img src="assets/images/a.jpg" alt="Aptitude Test" class="card-img">
+        <h3 class="card-title">Aptitude Test</h3>
+        <p class="card-subtitle">Sharpen your logical reasoning skills</p>
+        <a href="aptitude.php" class="card-btn">Let's Go</a>
+      </div>
+      <!-- General Knowledge Card -->
+      <div class="card">
+        <img src="assets/images/gk2.png" alt="General Knowledge" class="card-img">
+        <h3 class="card-title">General Knowledge</h3>
+        <p class="card-subtitle">Stay updated with the world</p>
+        <a href="gk.php" class="card-btn">Let's Go</a>
+      </div>
+      <!-- Vocabulary Card -->
+      <div class="card">
+        <img src="assets/images/vocab.jpg" alt="Vocabulary" class="card-img">
+        <h3 class="card-title">Vocabulary</h3>
+        <p class="card-subtitle">Expand your word bank</p>
+        <a href="vocabulary.php" class="card-btn">Let's Go</a>
+      </div>
+      <!-- Grammar Card -->
+      <div class="card">
+        <img src="assets/images/grammer.jpg" alt="Grammar" class="card-img">
+        <h3 class="card-title">Grammar</h3>
+        <p class="card-subtitle">Master the rules of language</p>
+        <a href="grammar.php" class="card-btn">Let's Go</a>
+      </div>
+      <!-- Math Card -->
+      <div class="card">
+        <img src="assets/images/math.jpg" alt="Math" class="card-img">
+        <h3 class="card-title">Math</h3>
+        <p class="card-subtitle">Improve your problem-solving skills</p>
+        <a href="math.php" class="card-btn">Let's Go</a>
+      </div>
     </div>
+  </div>
 
 
 

@@ -19,6 +19,24 @@ function isStudentLoggedIn() {
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/preparations.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      /* background-color: #ebbd3d; */
+      background-color: #deebee;
+      font-family: 'Roboto', serif;
+    }
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+  </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -39,13 +57,13 @@ function isStudentLoggedIn() {
               <a class="nav-link" href="universities.php">Universities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Scholarships</a>
+              <a class="nav-link" href="scholarships.php">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="preparations.php">Preparations</a>
+              <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Blogs</a>
+              <a class="nav-link" href="blogs.php">Blogs</a>
             </li>
           </ul>
         </div>
@@ -68,8 +86,7 @@ function isStudentLoggedIn() {
             <?php else: ?>
             
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <li><a class="dropdown-item" href="edit_profile.php">Profile</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
               <?php endif; ?>
           </ul>

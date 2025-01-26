@@ -199,7 +199,7 @@ body{
         setInterval(() => {
             index = (index + 1) % phrases.length;
             animatedText.textContent = phrases[index];
-        }, 2000);
+        }, 1000);
     </script>
 
   <!-- Bootstrap JS -->

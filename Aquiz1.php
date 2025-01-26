@@ -1,3 +1,5 @@
+<!-- q_id = 1 -->
+
 <?php
 session_start();
 
@@ -5,6 +7,36 @@ session_start();
 if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
     header('Location: login.php');
     exit;
+}
+
+require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
+
+// Fetch questions from the database
+$q_id = 1;
+$sql = "SELECT question_id, description, answer FROM question WHERE q_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $q_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$questions = [];
+while ($row = $result->fetch_assoc()) {
+    $questions[] = $row;
+}
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $score = 0;
+    foreach ($questions as $question) {
+        $qid = $question['question_id'];
+        $correctAnswer = $question['answer'];
+
+        if (isset($_POST['answer_' . $qid]) && $_POST['answer_' . $qid] == $correctAnswer) {
+            $score++;
+        }
+    }
+
+    echo "<script>alert('Your total score is: $score');</script>";
 }
 ?>
 
@@ -20,6 +52,24 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/quiz1.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      /* background-color: #ebbd3d; */
+      background-color: #deebee;
+      font-family: 'Roboto', serif;
+    }
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+  </style>
 </head>
 
 <body>
@@ -41,13 +91,13 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
                             <a class="nav-link" href="universities.php">Universities</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Scholarships</a>
+                            <a class="nav-link" href="scholarships.php">Scholarships</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="preparations.php">Preparations</a>
+                            <a class="nav-link" href="preparations.php">Preparations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="blogs.php">Blogs</a>
                         </li>
                     </ul>
                 </div>
@@ -70,8 +120,7 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
                         <?php else: ?>
 
                             <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                            <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+                            <li><a class="dropdown-item" href="edit_profile.php">Profile</a></li>
                             <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                         <?php endif; ?>
                     </ul>
@@ -88,32 +137,22 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">Logical Reasoning Test</h1>
-        <form action="quiz1_result.php" method="POST">
-            <?php for ($i = 1; $i <= 10; $i++): ?>
-                <div class="mb-4">
-                    <p><strong>Question <?php echo $i; ?>:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q<?php echo $i; ?>" value="A" id="q<?php echo $i; ?>a" required>
-                        <label class="form-check-label" for="q<?php echo $i; ?>a">Option A</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q<?php echo $i; ?>" value="B" id="q<?php echo $i; ?>b">
-                        <label class="form-check-label" for="q<?php echo $i; ?>b">Option B</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q<?php echo $i; ?>" value="C" id="q<?php echo $i; ?>c">
-                        <label class="form-check-label" for="q<?php echo $i; ?>c">Option C</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="q<?php echo $i; ?>" value="D" id="q<?php echo $i; ?>d">
-                        <label class="form-check-label" for="q<?php echo $i; ?>d">Option D</label>
-                    </div>
-                </div>
-            <?php endfor; ?>
+        <form method="POST">
+        <?php foreach ($questions as $question): ?>
+            <div>
+                <p><?php echo htmlspecialchars($question['description']); ?></p>
+                <input type="radio" name="answer_<?php echo $question['question_id']; ?>" value="A"> A<br>
+                <input type="radio" name="answer_<?php echo $question['question_id']; ?>" value="B"> B<br>
+                <input type="radio" name="answer_<?php echo $question['question_id']; ?>" value="C"> C<br>
+                <input type="radio" name="answer_<?php echo $question['question_id']; ?>" value="D"> D<br>
+            </div>
+        <?php endforeach; ?>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit Quiz</button>
             </div>
         </form>
+
     </div>
 
     <!-- Bootstrap JS -->
