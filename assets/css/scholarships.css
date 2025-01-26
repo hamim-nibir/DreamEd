@@ -140,7 +140,7 @@
   margin-top: 50px;
   margin-left: 55px;
   margin-bottom: 50px;
- /* background-color: red; */
+ background-color: red;
 
 }
 
@@ -150,7 +150,8 @@
 }
 
 .FilterAndSearch {
-  background-image: linear-gradient(to right top,#D91B23,#124FEB);
+  /* background-image: linear-gradient(to right top,#D91B23,#124FEB); */
+  background: url('assets/images/home-bg.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;

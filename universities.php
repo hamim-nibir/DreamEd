@@ -1,3 +1,8 @@
+<?php
+// index.php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +24,7 @@
     body {
       font-family: 'Roboto', serif;
       background: url('assets/images/home-bg.jpg') no-repeat center center/cover;
+      /* background: #007bff; */
     }
 
     .navbar-brand {
@@ -30,13 +36,50 @@
       font-size: 26px;
       transition: 0.3s color;
     }
+
+    .search-1 button {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      border: none;
+      height: 45px;
+      background-color: #009970;
+      color: #fff;
+      width: 90px;
+      border-radius: 4px
+    }
+
+    .countries_dropdown-button {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      border: none;
+      height: 45px;
+      background-color: #009970;
+      color: #fff;
+      width: 90px;
+      border-radius: 4px
+    }
+
+    .shei {
+      background-color: #009970;
+      color: white;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      margin-left: 45%;
+      vertical-align: top;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
     
-
   </style>
-
 </head>
 
 <body>
+
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top bg-light">
     <div class="container-fluid">
@@ -61,7 +104,7 @@
               <a class="nav-link" href="preparations.php">Preparations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Blogs</a>
+              <a class="nav-link" href="blogs.php">Blogs</a>
             </li>
           </ul>
         </div>
@@ -70,8 +113,8 @@
       <!-- Right-side icons -->
       <ul class="nav-right">
         <!-- Search Icon -->
-        <li><a href="#"><i class="fas fa-search"></i></a></li>
-        <!-- message Icon -->
+        <li><a href="universities.php"><i class="fas fa-search"></i></a></li>
+        <!-- Message Icon -->
         <li><a href="#"><i class="far fa-comment"></i></a></li>
         <!-- User Icon with Dropdown -->
         <li class="dropdown">
@@ -79,17 +122,13 @@
             <i class="far fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userIcon">
-            <!-- Logged-out menu -->
-            <div id="loggedOutMenu" class="d-none">
+            <?php if (!isset($_SESSION['user_logged_in'])): ?>
               <li><a class="dropdown-item" href="login.php">Login/Register</a></li>
-            </div>
-            <!-- Logged-in menu -->
-            <div id="loggedInMenu" class="d-none">
+            <?php else: ?>
               <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-              <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-              <li><a class="dropdown-item" href="settings.php">Settings</a></li>
+              <li><a class="dropdown-item" href="edit_profile.php">Edit Profile</a></li>
               <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-            </div>
+            <?php endif; ?>
           </ul>
         </li>
       </ul>
@@ -101,8 +140,10 @@
   </nav>
 
 
-  
+
   <div class=unirows>
+
+
     <div class="FilterAndSearch">
       <div>
         <div class="UniSearchbar">
@@ -126,8 +167,8 @@
           </div>
         </div>
         <div class="countries_dropdown">
-          <input type="text" name="country_query" id="selectedItemsTextbox" autocomplete="off">
-          <button class="countries_dropdown-button">Select Countries</button>
+          <input type="text" name="country_query" id="selectedItemsTextbox" autocomplete="off" placeholder="Select Country">
+          <button class="countries_dropdown-button">Search</button>
           </form>
           <div class="resultbox">
 
@@ -200,8 +241,8 @@
       <div class="container py-2">
         <div class="h1 text-center text-dark" id="pageHeaderTitle">Universities</div>
 
-        <?php
 
+        <?php
         require_once "/xampp/htdocs/DreamEd/partials/DBconnection.php";
 
         $uni_query = isset($_GET['uni_query']) ? $_GET['uni_query'] : '';
@@ -229,7 +270,7 @@
           $sql .= " AND acceptance_rate <= $rng";
         } else if (empty($uni_query) == true && empty($country_query) == true && $rng > 0) {
           $rng = $conn->real_escape_string($rng);
-          $sql .= " WHERE acceptance_rate >= $rng";
+          $sql .= " WHERE acceptance_rate <= $rng";
         }
 
 
@@ -275,6 +316,26 @@
                   <a href="<?php echo $university['website_link']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
                 </li>
                 <li class="tag__item"><i class="fas fa-clock mr-2"></i>Acceptance Rate <?php echo $university['acceptance_rate']; ?>%</li>
+
+                <?php
+                if (isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in']) {
+                ?>
+                  <li class="tag__item play blue">
+                    <a href="alumni.php?uni_name=<?php echo urlencode($university['name']); ?>">
+                      <i class="fas fa-play mr-2"></i>Alumni From Your Universities
+                    </a>
+                  </li>
+                <?php
+                }
+                ?>
+
+                <li class="tag__item play blue">
+                  <a href="professors.php?uni_name=<?php echo urlencode($university['name']); ?>">
+                    <i class="fas fa-play mr-2"></i>Professors From This University
+                  </a>
+                </li>
+
+
               </ul>
             </div>
           </article>

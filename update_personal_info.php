@@ -50,12 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 WHERE uid = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ssssssi", $first_name, $last_name, $contact_no, $dob, $blood_group, $email, $uid);
-    } elseif ($user_type === 'faculty') {
+    } else if ($user_type === 'faculty') {
         $sql = "UPDATE $user_type 
                 SET first_name = ?, last_name = ?, contact_no = ?, email = ?, current_institute = ?, designation = ?, research_interest = ? 
                 WHERE uid = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "sssssssi", $first_name, $last_name, $contact_no, $email, $current_institute, $designation, $research_interest, $uid);
+    } else if ($user_type === 'alumni') {
+        $sql = "UPDATE $user_type 
+                SET first_name = ?, last_name = ?, contact_no = ?, email = ?
+                WHERE uid = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ssssi", $first_name, $last_name, $contact_no, $email, $uid);
     }
 
     // Execute the update query

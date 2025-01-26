@@ -33,9 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_type = $_SESSION['user_type'];
     if($user_type === 'student'){
         $id_column = 'sid';
-    } else if($user_type === 'faculty'){
+    } 
+    if($user_type === 'faculty'){
         $id_column = 'aid';
-    } else {
+    }if($user_type === 'alumni'){
         $id_column = 'fid';
     }
 
@@ -62,10 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($conn);
 
     // Redirect back to profile
-    header("Location: edit_profile.php");
+    header("Location: dashboard.php");
     exit();
 } else {
-    header("Location: edit_profile.php");
+    header("Location: dashboard.php");
     exit();
 }
 ?>

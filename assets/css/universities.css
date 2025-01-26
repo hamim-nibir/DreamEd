@@ -127,21 +127,6 @@
 
 
 
-
-.search-1 button {
-  position: absolute;
-  right: 1px;
-  top: 0px;
-  border: none;
-  height: 45px;
-  background-color: red;
-  color: #fff;
-  width: 90px;
-  border-radius: 4px
-}
-
-
-
 .colsearch{
 
 background-color: red;
@@ -161,18 +146,6 @@ vertical-align: top;
 width: 100%;
 padding: 8px;
 margin-bottom: 10px;
-}
-
-.countries_dropdown-button {
-background-color: #4CAF50;
-color: white;
-padding: 12px;
-font-size: 15px;
-border: none;
-cursor: pointer;
-margin-left: 80.33%;
-vertical-align: top;
-margin-top: -55px;
 }
 
 .countries_dropdown-content {
@@ -323,17 +296,4 @@ cursor: pointer;
 
 .resultbox ul li :hover{
   background-color: #e9f3ff;
-}
-
-
-.shei{
-  background-color: #4CAF50;
-color: white;
-padding: 12px;
-font-size: 15px;
-border: none;
-cursor: pointer;
-margin-left: 45%;
-vertical-align: top;
-margin-top: 5px;
 }

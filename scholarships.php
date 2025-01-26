@@ -17,6 +17,70 @@ session_start();
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/scholarships.css">
   <link rel="stylesheet" href="assets/css/card.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      font-family: 'Roboto', serif;
+      /* background: url('assets/images/home-bg.jpg') no-repeat center center/cover; */
+    }
+    .FilterAndSearch {
+  /* background-image: linear-gradient(to right top,#D91B23,#124FEB); */
+  background: url('assets/images/home-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+    .navbar-brand {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-right: auto;
+      /* Keeps the brand on the left */
+      font-weight: 800;
+      color: #009970;
+      font-size: 26px;
+      transition: 0.3s color;
+    }
+
+    .search-1 button {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      border: none;
+      height: 45px;
+      background-color: #009970;
+      color: #fff;
+      width: 90px;
+      border-radius: 4px
+    }
+
+    .countries_dropdown-button {
+      background-color: #009970;
+      color: white;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      margin-left: 80.35%;
+      vertical-align: top;
+      margin-top: -55px;
+    }
+
+    .shei {
+      background-color: #009970;
+      color: white;
+      padding: 12px;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      margin-left: 45%;
+      vertical-align: top;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 
 <body>
@@ -113,7 +177,7 @@ session_start();
 	  </div> 
 	</div> 
 	<div class="countries_dropdown">
-	  <input type="text" name = "country_query" id="selectedItemsTextbox" autocomplete="off">
+	  <input type="text" name = "country_query" id="selectedItemsTextbox" autocomplete="off" placeholder="Search by Country">
 	  <button class="countries_dropdown-button">Select Countries</button>
 	  </form>
     <div class = "resultbox">
