@@ -267,10 +267,10 @@ session_start();
 
         if ((!empty($uni_query) || !empty($country_query)) && $rng > 0) {
           $rng = $conn->real_escape_string($rng);
-          $sql .= " AND acceptance_rate <= $rng";
+          $sql .= " AND acceptance_rate >= $rng";
         } else if (empty($uni_query) == true && empty($country_query) == true && $rng > 0) {
           $rng = $conn->real_escape_string($rng);
-          $sql .= " WHERE acceptance_rate <= $rng";
+          $sql .= " WHERE acceptance_rate >= $rng";
         }
 
 
@@ -316,18 +316,14 @@ session_start();
                   <a href="<?php echo $university['website_link']; ?>"> <i class="fas fa-play mr-2"></i>See More</a>
                 </li>
                 <li class="tag__item"><i class="fas fa-clock mr-2"></i>Acceptance Rate <?php echo $university['acceptance_rate']; ?>%</li>
-
-                <?php
-                if (isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in']) {
-                ?>
+               
                   <li class="tag__item play blue">
                     <a href="alumni.php?uni_name=<?php echo urlencode($university['name']); ?>">
                       <i class="fas fa-play mr-2"></i>Alumni From Your Universities
                     </a>
                   </li>
-                <?php
-                }
-                ?>
+                
+                
 
                 <li class="tag__item play blue">
                   <a href="professors.php?uni_name=<?php echo urlencode($university['name']); ?>">
