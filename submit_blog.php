@@ -5,7 +5,7 @@ session_start();
 // Check if the session is set
 if (!isset($_SESSION['user_logged_in'])) {
     // If session is not set, redirect to the blog page
-    header("Location: blogs.php"); // Replace 'blogs.php' with the actual blog page URL
+    header("Location: login.php"); // Replace 'blogs.php' with the actual blog page URL
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
-        header("Location: blogs.php");
+        header("Location: login.php");
         exit();
 
     }

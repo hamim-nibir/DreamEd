@@ -213,7 +213,7 @@
 
 	<section class="light">
 		<div class="container py-2">
-			<div class="h1 text-center text-dark" id="pageHeaderTitle">Professors</div>
+			<div class="h1 text-center text-dark" id="pageHeaderTitle">Alumni</div>
 	
 			
 		<?php
